@@ -487,4 +487,21 @@
   date   = {2019},
 }
 
+@Online{RAI,
+  author = {Real Academia de Ingeniería},
+  title  = {Diccionario Español de Ingeniería},
+  year   = {2014},
+  date   = {2014},
+  url    = {http://diccionario.raing.es/es/lema/telecomunicaci%C3%B3n},
+}
+
+@Report{telemetry,
+  author      = {ADS},
+  title       = {Telemetry: Summary of concept and rationale},
+  institution = {SAO/NASA Astrophysics Data System (ADS)},
+  year        = {1987},
+  date        = {1987-12},
+  url         = {https://ui.adsabs.harvard.edu/abs/1987STIN...8913455./abstract},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}
