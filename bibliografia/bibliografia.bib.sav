@@ -25,7 +25,7 @@
 }
 
 @Article{artRF,
-  author  = {Hongquan Wanga and Ramata Magagia and Kalifa Goïtaa and Melanie Trudela and Heather McNairnb and Jarrett Powers},
+  author  = {Hongquan Wanga and Ramata Magagia and Kalifa Goïtaa and Melanie Trudela and Heather McNairnb Jarrett Powers},
   title   = {Crop phenology retrieval via polarimetric SAR decomposition and Random Forest algorithm},
   journal = {Elsevier},
   year    = {2019},

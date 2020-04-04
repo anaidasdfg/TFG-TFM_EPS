@@ -20,18 +20,41 @@
 \par Este proyecto se va a centrar en el sistema de la teledetección, definido como la adquisición de información un objeto, área o fenómeno, ya sea usando instrumentos de grabación o instrumentos de escaneo en tiempo real inalámbricos o que no están en contacto directo con el objeto, según la \gls{rai} \cite{RAI}. Estos instrumentos van a medir la radiación electromagnética que emiten o reflejan los objetos observados. Algunos de estos instrumentos pueden ser cámaras fotográficas, láseres, sistemas de radar o sonar, y pueden ser pasivos, miden la radiación natural emitida o reflejada, o activos, emiten energía que posteriormente será reflejada y detectada.
 \\
 \par Los instrumentos de medida, ya sean pasivos o activos, tienen la ventaja de poder estar situados a grandes distancias de la localización donde se quiera realizar la detección. Es por ello que se encuentran normalmente en satélites, aviones, barcos, etcétera, dependiendo de lo que se quiera medir. Las aplicaciones que engloba la teledetección son muy numerosas y suelen estar enfocadas a estudios científicos de ciertas áreas de la Tierra. 
-\subsection{Caso particular}
-\par Una vez introducida la tecnología existente para el área de este proyecto, concretamos cuál va a ser nuestra situación. 
+\subsection{Caso particular a tratar}
+\par Una vez introducida la tecnología existente para el área de este proyecto, concretamos cuál va a ser nuestra situación.
 \\
-\par Ya que la aplicación en la que se mueve este proyecto es la agrícola, siendo esta la observación y adquisición de información de cultivos para su posterior estudio fenológico, la tecnología que se va a utilizar para ello son sistemas radar (radio detection and ranging), sistema activo, situado en un satélite artificial denominado Sentinel-1, del Programa Copérnico de la \gls{aema}. 
+\par Ya que la aplicación en la que se mueve este proyecto es la agrícola, concretamente la observación y adquisición de información de cultivos para su posterior estudio fenológico, la tecnología que se va a utilizar para ello son sistemas radar (radio detection and ranging), sistema activo, situado en un satélite artificial denominado Sentinel-1, del Programa Copérnico de la \gls{aema}. Estas tecnologías serán explicadas más detalladamente en el marco teórico.
 \\
-\par En este área ya hay estudios previos que, a partir de datos similares se obtiene un estado de la fenología aproximado de los cultivos observados, como son 
+\par En este área ya hay estudios previos que, a partir de datos similares que comparten estos programas, se obtiene un estado de la fenología aproximado de los cultivos observados. Algunos estudios previos precedentes y que sirven de base para este \gls{tfg} son:
+\\
+\begin{itemize}
+    \item \cite{Juanma2014}, artículo de 2014 que trata de estimar el estado fenológico de cultivos en tiempo real empleando espacio de estados y técnicas de sistemas dinámicos utilizando información del pasado y actualizaciones y, finalmente una extensión del filtro de Kalman. La información que utiliza proviene de un radar polarimétrico del satélite Radsat-2 y los cultivos son 3 tipos de cereales. 
+    \\
+    \item \cite{Juanma2016}, artículo de 2016 que trata, de estimar el \gls{ndvi}, el cual representa el estado de la fenología, en tiempo real empleando filtros de partículas para integrar las dos fuentes de información utilizadas: imágenes \gls{sar} y temperatura del aire registrada. El satélite del que se obtiene la información es el TerraSAR-X y los cultivos observados son arrozales, como va a ser nuestro caso. Este obtienen resultados algo mejores que en el anterior artículo y se utiliza la misma tecnología que encontramos en este proyecto: \gls{sar}. 
+    \\
+    \item \cite{artRF}, artículo de 2019 todavía más similar al objetivo de este proyecto, en él se estima el estado fenológico de distintos tipos de cultivos utilizando imágenes \gls{sar} proporcionadas por el satélite RADARSAT-2 y el método \gls{rf} para series temporales, que es uno de los elegidos también para este proyecto. 
+\end{itemize} 
+
+\par En resumen, para este proyecto en particular, el cultivo observado son arrozales, los datos empleados son imágenes \gls{sar} de los satélites Sentinel-1A y Sentinel-1B con ciclos periódicos de 6 días teniendo en cuenta ambos a partir de 2016, y las técnicas de estimación se basarán en las regresiones de series temporales y técnicas de aprendizaje automático. 
+\\
+
 \section{Objetivos}
+Contribuyendo a la línea de investigación de los artículos \cite{Juanma2014} y \cite{Juanma2016}, cuyos autores Juan Manuel López Sanchéz y Tomás Martínez Marín son el tutor y co-tutor de este \gls{tfg}, respectivamente, el objetivo general sería estimar el estado de cultivos de arroz mediante el análisis series temporales con técnicas de aprendizaje automático y su unión a la línea de procesamiento original.
+\\
+\par Los objetivos concretos serían: 
+\begin{itemize}
+	\item Analizar las posibles técnicas de regresión de aprendizaje autónomo (por ejemplo, regresión con \gls{rf}) para estimar directamente el estado de los cultivos a partir de series temporales de datos. 
+	\item Analizar las posibles técnicas de aprendizaje autónomo para ser combinados con algoritmos ya disponibles de dinámica de sistemas en la estimación del estado de cultivos.
+	\item Incorporar dichas técnicas en la cadena de procesado disponible.
+\end{itemize}
 
 \section{Estructura de la memoria}
-\begin{equation}
-	a_{0}
-	\label{eq:max}
-\end{equation}
-
+\par La estructura de la memoria se va a dividir en 3 secciones principales las cuales son: marco teórico, metodología y resultados. Además de unas conclusiones finales valorando los resultados obtenidos.
+\\
+\par En el marco teórico se expondrá toda la teoría necesaria para la compresión de este proyecto en términos técnicos y dentro de un contexto y una investigación previa que este continúa. Veremos en él las técnicas de regresión y machine learning existentes y candidatas para ser utilizadas, teoría de la teledetección, incluyendo cómo funcionan los sistemas radar, en concreto los \gls{sar}, qué información obtenemos y cómo interpretarla, y, finalmente, la estimación de parámetros físicos de los cultivos a partir de la información obtenida mediante regresión, qué parámetros son clave y qué procesamiento necesita la información para llegar a obtener estimaciones fiables y útiles. 
+\\
+\par En cuanto a la metodología, se incluirán tanto las técnicas y métodos concretos que se van a utilizar, por qué motivos y qué esperamos obtener de ellos, como el software, el lenguaje de programación que vamos a emplear, las herramientas utilizadas y las bases de datos con las que vamos a trabajar, incluyendo su procedencia y procesamiento previo. 
+\\
+\par Por último, el apartado de resultados expondrá los resultados obtenidos con las diferentes técnicas de regresión y aprendizaje automático para los mismos datos. Estos resultados podrán ser fácilmente evaluados ya que se contrastarán, además, con los datos reales tomados en tierra de los mismos cultivos que se presentan en el dataset. 
+\\
 
