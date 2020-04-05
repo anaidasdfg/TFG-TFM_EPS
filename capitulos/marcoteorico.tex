@@ -5,111 +5,23 @@
 % Contacto: info@jmrplens.com / Telegram:@jmrplens
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\chapter{Marco Teórico (Con ejemplos de listas)}
+\chapter{Marco Teórico}
 \label{marcoteorico}
-
-\section{Técnicas de regresión y machine learing}
-Hacer una lista es simple en \LaTeX. Para ello has de crear un entorno (así se llama) itemize con
-\begin{lstlisting}[style=Latex-color]
-\begin{itemize}
-...
-\end{itemize}
-\end{lstlisting}
-Y dentro de esa estructura, añadir cada elemento de la lista precedido de 
-\begin{lstlisting}[style=Latex-color]
-\item primer ítem de lista
-\item segundo ítem de lista
-...
-\item ultimo ítem de lista
-\end{lstlisting}
-
-Es importante que revises este texto tal como aparece en la plantilla y relaciones el aspecto que tiene el PDF final con cómo está escrito el documento \LaTeX.
-\vspace{1em}
-\noindent\hrule
-\vspace{1em}
-
-Aquí va una lista con subtérminos:
-\begin{lstlisting}[style=Latex-color]
-	\begin{itemize}
-    \item Ingeniería Informática.
-    \item Ingeniería Sonido e Imagen en Telecomunicación.
-    \item Ingeniería Multimedia.
-         \subitem Mención: Creación y ocio digital.
-         \subitem Mención: Gestión de Contenidos.
-	\end{itemize}
-\end{lstlisting}
-
-El resultado es el siguiente:
-\begin{itemize}
-    \item Ingeniería Informática.
-    \item Ingeniería Sonido e Imagen en Telecomunicación.
-    \item Ingeniería Multimedia.
-         \subitem Mención: Creación y ocio digital.
-         \subitem Mención: Gestión de Contenidos.
-\end{itemize}
-\vspace{1em}
-\noindent\hrule
-\vspace{1em}
-Aquí va una lista con subtérminos pero numerada:
-\begin{lstlisting}[style=Latex-color]
-\begin{enumerate}
-    \item Ingeniería Informática.
-    \item Ingeniería Sonido e Imagen en Telecomunicación.
-    \item Ingeniería Multimedia.
-    \begin{enumerate}
-         \item Mención: Creación y ocio digital.
-         \item Mención: Gestión de Contenidos.
-   	\end{enumerate}
-\end{enumerate}
-\end{lstlisting}
-
-El resultado es el siguiente:
-\begin{enumerate}
-    \item Ingeniería Informática.
-    \item Ingeniería Sonido e Imagen en Telecomunicación.
-    \item Ingeniería Multimedia.
-    \begin{enumerate}
-         \item Mención: Creación y ocio digital.
-         \item Mención: Gestión de Contenidos.
-   	\end{enumerate}
-\end{enumerate}
-
+\par A continuación se expone la teoría necesaria para la comprensión de este \gls{tfg}, ampliando la información ya presentada en el capítulo \ref{introduccion}.
+\section{Técnicas de regresión y machine learning}
+\par Las técnicas de regresión son todas aquellas técnicas que buscan la relación de una variable dependiente con una o más variables independientes mediante la estimación de su función de regresión, función para la cual se promedian todos los valores de la variable dependiente para unos valores fijos de las variables independientes. Además, también se tiene en cuenta la varianza de la variable dependiente para estos mismos valores, pudiendo ser estudiada también mediante su distribución de probabilidad. Esta varianza indica la fiabilidad de nuestras estimaciones o el "ruido" en las medidas de la variable dependiente. 
+\\
+\par El caso más sencillo de regresión es el que solo tenemos una variable dependiente y otra independiente, este caso se conoce como regresión lineal, ya que la función de regresión estimada se corresponde a la ecuación de una recta. Los datos que obtenemos para la variable dependiente que vamos a relacionar tienen, aparte de la componente lineal, una componente aleatoria de ruido que puede deberse a distintos fenómenos como la precisión mínima del instrumento de medida, el ruido que este mismo general en la medida o contribuciones de fuentes externas, consideradas como ruido también. 
+\\
+\par *Introducir aquí parte analítica regresión lineal*
+\\ 
+\par Cuando introducimos mayor número de variables independientes, la regresión es no lineal, ya que la respuesta de la variable dependiente varía en función a la contribución de cada una de esas dependencias, por lo que la función de regresión presentará mayor complejidad. Cualquier variable independiente que tenga relación con la dependiente es útil en mayor o menor medida pero siempre proporciona información aunque su varianza sea muy grande o su contribución relativamente pequeña. Cualquier tipo de información extra proporciona un ajuste a la estimación final positivo si esta se ha modelado correctamente. 
+\\
+\par *Introducir aquí parte analítica regresión no lineal*
+\\
+\par Las técnicas de regresión proporcionan una estimación útil para realizar predicciones, por lo que están relacionados con el aprendizaje automático o machine learning. El machine learning es un tipo de inteligencia artificial, que se caracteriza por la generación de un modelo estimado de manera automática por un computador. Como se puede ver, el objetivo de este aprendizaje y las técnicas de regresión coinciden tienen gran parte de su desarrollo en común. 
+\\
+\par Algunos de los modelos de machine learning son: 
 \section{Teledetección}
 \section{Estimación de parámetros físicos de cultivos mediante regresión}
- Puedes realizar una lista de conceptos con su definición del siguiente modo:
  
-\begin{lstlisting}[style=Latex-color]
-\begin{description} % Inicio de la lista
- 	\item[MAPP XT:] Programa desarrollado por \textit{Meyer Sound} para el diseño y ajuste de sistemas formados por altavoces de su marca.
-  	\begin{description} % Realiza una lista dentro de la lista
-  		\item[Ventajas:]~ 
-  		El programa permite realizar múltiples ajustes tal como se podría realizar en la realidad con un procesador real.
-  	
-  		Permite analizar la fase recibida en cualquier punto y compararla con otras mediciones.
-  	
-  		Dispone de varios tipos de filtros, inversiones de fase, etc.
-  		\item[Inconvenientes:]~ 
-  		No existe una lista global de los altavoces ubicados en el plano, por lo tanto solo se pueden editar seleccionándolos sobre el plano.
-  	
-  		Sólo permite diseñar en 2 dimensiones, principalmente sobre la vista lateral ya que los array de altavoces no permite voltearlos.
-  	\end{description}
-\end{description}
-\end{lstlisting}
-
- Y \LaTeX~genera lo siguiente:
- 
-\begin{description} % Inicio de la lista
- 	\item[MAPP XT:] Programa desarrollado por \textit{Meyer Sound} para el diseño y ajuste de sistemas formados por altavoces de su marca.
-  	\begin{description} % Realiza una lista dentro de la lista
-  		\item[Ventajas:]~ 
-  		El programa permite realizar múltiples ajustes tal como se podría realizar en la realidad con un procesador real.
-  	
-  		Permite analizar la fase recibida en cualquier punto y compararla con otras mediciones.
-  	
-  		Dispone de varios tipos de filtros, inversiones de fase, etc.
-  		\item[Inconvenientes:]~ 
-  		No existe una lista global de los altavoces ubicados en el plano, por lo tanto solo se pueden editar seleccionándolos sobre el plano.
-  	
-  		Sólo permite diseñar en 2 dimensiones, principalmente sobre la vista lateral ya que los array de altavoces no permite voltearlos.
-  	\end{description}
-\end{description}
