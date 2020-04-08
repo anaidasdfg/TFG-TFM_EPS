@@ -21,14 +21,30 @@
 \\
 \par *Introducir aquí parte analítica regresión no lineal*
 \\
-\par A parte de las regresiones lineales y no lineales mencionados, también encontramos otros métodos de regresión como son los mínimos errores absoluto (bastante similar al \gls{mmc}), la regresión no paramétrica o la regresion lineal bayesiana.
+\par A parte de las regresiones lineales y no lineales mencionados, también encontramos otros métodos de regresión como son los mínimos errores absoluto (bastante similar al \gls{mmc}), la regresión no paramétrica o la regresión lineal bayesiana.
 
-\par Las técnicas de regresión proporcionan una estimación útil para realizar predicciones, por lo que están relacionados con el aprendizaje automático o machine learning. El machine learning es un tipo de inteligencia artificial, que se caracteriza por la generación de un modelo estimado de manera automática por un computador. Como se puede ver, el objetivo de este aprendizaje y las técnicas de regresión coinciden y tienen gran parte de su desarrollo en común. 
+\par Las técnicas de regresión proporcionan una estimación útil para realizar predicciones, por lo que están relacionados con el aprendizaje automático o machine learning. El machine learning es un tipo de inteligencia artificial, que se caracteriza por la generación de un modelo estimado de manera automática por un computador. Esta estimación se realiza con un entrenamiento previo aplicado a un algoritmo de aprendizaje específico a una serie de datos de entrenamiento. Con este aprendizaje se elabora un modelo que es capaz de devolver una salida o solución a partir de unos parámetros de entrada que deben ser del mismo tipo que los utilizados en la fase de aprendizaje. 
 \\
-\par Los modelos empleados en machine learning son numerosos, y su clasificación se puede realizar dependiendo de su algoritmo de aprendizaje,: 
+\par * Introducir aquí esquema de ML *
+\\
+\par Finalmente, el objetivo de las técnicas de machine learning puede ser clasificar una información o realizar una previsión acorde con un modelo estimado. Como se puede ver, el objetivo de este y las técnicas de regresión pueden coincidir y esto lleva a que tienen parte de su desarrollo en común. 
+
+\subsection{Clasificación de técnicas de machine learning}
+\par Los modelos empleados en machine learning son numerosos, y su clasificación se puede realizar dependiendo de su algoritmo de aprendizaje y del tipo de razonamiento en el que se basa. Comenzando por la clasificación según su algoritmo de aprendizaje, que principalmente se dividen según el feedback  del que aprenden, los modelos se pueden clasificar de la siguiente manera \cite{MLRussell}: 
 \begin{itemize}
-	\item Aprendizaje supervisado: tanto las entradas al modelo de aprendizaje como las salidas están previamente definidas. Se realiza un entrenamiento en el que se utilizan las entradas con sus correspondientes salidas para elaborar el modelo. Una vez suficientemente entrenado, este puede obtener salidas previamente desconocidas a partir de 
+	\item Aprendizaje no supervisado: este aprendizaje se basa en la clasificación o agrupación de los objetos de entrada según patrones que cumplen las distintas entradas de estos. Estos métodos no devuelven un nombre específico para cada grupo o cluster ya que no se le han proporcionado referencias o etiquetas en la etapa de entrenamiento. Necesita numerosas entradas en el entrenamiento para detectar patrones suficientemente estables. 
+	\item Aprendizaje por refuerzo: el aprendizaje se realiza por refuerzo positivo, que sería una recompensa, o negativo, penalización. Este algoritmo buscaría la estimación del modelo para obtener el máximo refuerzo positivo posible. Así, tras suficiente entrenamiento construye un modelo muy preciso para nuevas entradas. 
+	\item Aprendizaje supervisado: tanto las entradas como las salidas están previamente definidas en la etapa de aprendizaje. Se realiza un entrenamiento en el que se utilizan las entradas con sus correspondientes salidas para elaborar el modelo. Una vez suficientemente entrenado, este puede obtener salidas previamente desconocidas a partir de entradas similares a las del entrenamiento. 
+	\item Aprendizaje semi-supervisado: este aprendizaje recibe algunas de sus entradas correctamente etiquetadas y el resto de ellas, la mayoría, sin etiquetar, así tiene algunas referencias para la clasificación fiables pero no toma las etiquetas como una referencia totalmente cierta para toda la clasificación como ocurre en el aprendizaje supervisado. Así se evitan malos aprendizajes por ruido o etiquetas erróneas en los datos de entrada. Bastante común en grandes masas de datos para aprendizaje. 
 \end{itemize}
+\par Por otra parte, teniendo en cuenta la base de los razonamientos internos que los algoritmos realizan, aunque no considerando esta división estricta, las técnicas se pueden clasificar de la siguiente manera \cite{MLFlach}:
+\begin{itemize}
+	\item Geométricos: los modelos geométricos son aquellos cuyos objetos pueden ser representados en un espacio de instancias (X) en el que cada instancia corresponde a un posible objeto, esto es, habrá tantas instancias como objetos con distintas combinaciones de entradas posibles. Por otra parte, las etiquetas también se representan como un espacio de etiquetas (Y) con un número finito de posibilidades \citep{MLPref}. Utilizando estos conceptos, el algoritmo se desarrolla con otros conceptos geométricos como son líneas, planos y distancias. Estos métodos suelen ser aplicados cuando X e Y están formados por valores numéricos, que son fácilmente representables en ejes de coordinadas.
+	\item Probabilísticos: 
+	\item Lógicos:
+\end{itemize}
+
+\subsection{Modelos de machine learning y aplicaciones}
 \section{Teledetección}
 \section{Estimación de parámetros físicos de cultivos mediante regresión}
  
