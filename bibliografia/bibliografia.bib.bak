@@ -86,4 +86,19 @@
   url     = {https://dblp.org/rec/journals/corr/Maity16.bib},
 }
 
+@Online{yts1,
+  author = {European Space Agency},
+  title  = {Sentinel-1: Radar mission},
+  year   = {2014},
+  date   = {2014-04-01},
+  url    = {https://www.youtube.com/watch?v=FJWzLxdSMyA},
+}
+
+@Online{copernicusOV,
+  author = {European Space Agency},
+  title  = {Copernicus Overview},
+  year   = {2016},
+  url    = {https://www.esa.int/Applications/Observing_the_Earth/Copernicus/Overview4},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}
