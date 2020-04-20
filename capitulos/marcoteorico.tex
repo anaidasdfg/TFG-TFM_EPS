@@ -8,7 +8,7 @@
 \chapter{Marco Teórico}
 \label{marcoteorico}
 \par A continuación se expone la teoría necesaria para la comprensión de este \gls{tfg}, ampliando la información ya presentada en el capítulo \ref{introduccion}.
-\section{Técnicas de regresión y machine learning}
+\section{Técnicas de regresión y Machine Learning}
 
 
 \par Las técnicas de regresión proporcionan una estimación útil para realizar predicciones, por lo que están relacionados con el aprendizaje automático o \gls{ml}. El \gls{ml} es un tipo de inteligencia artificial, que se caracteriza por la generación de un modelo estimado de manera automática por un computador. Esta estimación se realiza con un entrenamiento previo aplicado a un algoritmo de aprendizaje específico a una serie de datos de entrenamiento. Con este aprendizaje se elabora un modelo que es capaz de devolver una salida o solución a partir de unos parámetros de entrada que deben ser del mismo tipo que los utilizados en la fase de aprendizaje. 
@@ -33,7 +33,7 @@
 	\item Agrupaciones y gradiente: estos modelos se incluyen en los anteriores, ya que es una clasificación paralela según el tratamiento del espacio de instancias (X): agrupaciones seccionando estos espacios en un número de segmentos definido, fácilmente representables y con una única solución, en cambio; en los gradientes, no existe una segmentación previamente definida, por lo que el modelo trata todo el espacio como uno solo. 
 \end{itemize}
 
-\subsection{Modelos de machine learning y aplicaciones}
+\subsection{Modelos de Machine Learning y aplicaciones}
 \par Una vez presentadas todas las posibles clasificaciones de técnicas de \gls{ml}, podemos adentrarnos en los modelos más comunes, a qué tipo de los anteriores pertenecen y cuáles son sus aplicaciones más usuales y en las que son más efectivos. Algunos de los más conocidos son los siguientes:
 \begin{itemize}
 	\item Redes neuronales artificiales: este modelo es de tipo geométrico y de aprendizaje supervisado, ya que el entrenamiento consta de entradas etiquetadas con su correspondiente salida. Este modelo se caracteriza por estar inspirado por las redes neuronales naturales del cerebro animal, obteniendo resultados sin unas reglas preestablecidas de análisis. Estas redes están compuestas por capas de neuronas, las cuales representan un peso y una función de activación por la que una parte de la información de entrada se va a procesar. Estas funciones y pesos se van ajustando mediante el entrenamiento hasta tener una red óptima para su funcionamiento. En cuanto a aplicaciones, la más común de este modelo es el reconocimiento en imágenes de objetos o caracteres. Cuando analizamos imágenes cada unidad de información a la entrada para un objeto está formada por un pixel, y cada capa de neuronas irá reconociendo formas, colores, etc. hasta devolver la clasificación que corresponde a ese objeto de entrada. 
@@ -121,4 +121,28 @@ P_{R}=\frac{P_{T}\lambda ^{2}G^{2}\sigma_{0}S}{(4\pi ) ^{3}L_{s}L_{a}R^{4}}
 	\item Polarimetría: se basa en la polarización de la onda recibida como fuente de información. Analiza su polarización estudiando su orientación y elipticidad media, con ellas se obtienen las matrices o vectores de scattering que definen una superficie por el cambio que esta realiza a la polarización de una onda incidente polarizada conocida. Esto da información sobre el tipo de superficie que se está observando. 
 \end{itemize}
 \section{Estimación de parámetros físicos de cultivos mediante regresión}
- 
+\par A continuación, se van a presentar los conceptos físicos que definen el estado de desarrollo de los cultivos, para comprender cuáles son los parámetros clave y objetivos de este proyecto. Posteriormete, se expone la información útil extraíble de las imágenes \gls{sar}, a partir de la cuál se va a trabajar para el objetivo anterior. Por último, se verá la aplicación de las técnicas de regresión a los datos obtenidos para elaborar un modelo representativo del estado fenológico de un cultivo.
+
+\subsection{Parámetros físicos de la fenología}
+\par La fenología es la ciencia que estudia la relación entre los factores climáticos y los ciclos de los seres vivos \citep{feno}. Esto es, el estudio del desarrollo de plantas y animales en relación con parámetros ambientales. Este proyecto se centrará en el estudio fenológico de plantas, en concreto de cultivos de arroz, por lo que se va a profundizar en las características fenológicas que los describen. Algunos de los parámetros clave son los siguientes: 
+\begin{itemize}
+	\item Escala \gls{bbch}, que recibe su nombre por los participantes en su estudio y desarrollo, es una escala numérica de intervalo 0-9 que representa el estado de desarrollo fenológico de las plantas \cite{bbch}. Cada valor numérico corresponde a un estado de desarrollo, desde la germinación o primeros brotes, correspondientes al estado 0, hasta la senectud, estado 9. Cada estado puede estar dividido hasta en 10 sub-etapas. El rango de que cada etapa abarca, concretamente para los cultivos de arroz, se puede observar en la tabla *insertar tabla* \cite{bbcht}. Para que uno de estos estados sea considerado el nivel general de una parcela, no solo tiene que ser este estado el mayoritario, sino que debe abarcar más del 50\% del cultivo. 
+	\item \gls{ndvi}, enunciado anteriormente, es el índice de vegetación de diferencia normalizada, es un índice usado para estimar la cantidad, calidad y desarrollo de la vegetación con base a la medición de la intensidad de la radiación de ciertas bandas del espectro electromagnético en ella. Estas bandas son concretamente las bandas del rojo y del infrarrojo cercano, con rangos de  reflexión entre 0 y 1 cada una de ellas. El coeficiente gls{ndvi} se obtiene según la fórmula \ref{eq:ndvi}, conformando un rango entre -1 y 1, y representa el desarrollo de la vegetación, ya que la contribución de la banda infrarroja cercana está ligada a la reflexión de la celulosa, por tanto a las áreas verdes y frondosas, mientras que la banda roja es mucho menos sensible a estas contribuciones y más a la absorción de clorofila. En resumen, un buen desarrollo vegetal tiene valores de \gls{ndvi} más cercanos a la unidad positiva \citep{ndvi}. 
+	\begin{equation} \label{eq:ndvi}
+		NDVI = \frac{IRCercano-ROJO}{IRCercano+ROJO}
+	\end{equation}
+	\item La altura del cultivo, aunque depende del tipo que sea, también es un indicador fiable del desarrollo de las plantaciones, sobre todo en cereales como, en este caso, es el arroz. El arroz, desde que germina hasta el momento de su cosecha, puede crecer entre 30-40 cm de alto según la variedad que este sea, por lo tanto, el seguimiento de la altura es un proceso sencillo y eficaz para monitorizar el estado de estos cultivos. 
+	\item Temperatura del aire, o el calor acumulado durante todo el proceso de desarrollo de un cultivo, tiene influencia de manera directa en la duración de los distintos estados fenológicos del mismo. Concretamente en los cultivos de arroz tiene un impacto notable, por lo que se considera otro de los parámetros a tener en cuenta para su monitorización y en la elaboración de modelos de predicción \cite{Juanma2016}.
+\end{itemize} 
+\subsection{Extracción de información de imágenes \gls{sar}}
+\par Las imágenes \gls{sar} dan una información del coeficiente de backscattering ($sigma_{0}$), según una polarización de onda emitida y recibida, siendo este representado en ejes de azimuth y rango, como se ha explicado anteriormente. Para este proyecto se van a tener en cuenta estas imágenes, de libre acceso por la \gls{esa}, con los canales de polarización VV y VH, esto es, emisión vertical y recepción tanto vertical como horizontal. Se ha elegido la polarización vertical ya que es la que el programa de los satélites de Sentinel-1 ofrece sobre Europa, y, además, es más sensible al crecimiento de los cultivos de arroz por la verticalidad de sus tallos. Por otra parte, las imágenes de polarización horizontal recibida proporciona información extra que puede ser útil y que es bastante semejante a la obtenida en HV, es decir, emisión horizontal y recepción vertical, por lo que se abarca la mayor parte de información útil posible. 
+\\
+\par Las imágenes \gls{sar} pueden ser adquiridas con distintos formatos. El que se va a utilizar aquí es el formato \gls{grd} *¿Resolución?* por conveniencia para este estudio. Este formato consiste en imágenes \gls{sar} multi-look (reducción de speckle) y proyectadas al rango de la tierra utilizando un modelo de elipsoide de la Tierra. La información de la fase es suprimida, lo cual no es un problema para este estudio, ya que no era uno de los parámetros clave, y los píxeles que presenta la imagen son aproximadamente cuadrados *dimensiones* \cite{copData}. 
+\\
+\par El primer problema reconocible en la obtención de estas imágenes es su falta de correspondencia con las coordenadas geográficas comúnmente utilizadas, además de las dimensiones y orientación de estas, ya que las imágenes abarcan áreas de mucho mayor tamaño a las áreas de cultivos aquí estudiados, y la orientación no es totalmente paralela al eje polar de la Tierra, sino que presenta cierta inclinación. Para solucionar todo ello, se realiza un pre-procesado desarrollado por el Departamento de Física, Ingeniería de Sistemas y Teoría de la Señal de la Escuela Politécnica Superior, utilizando el software libre SNAP cedido por la \gls{esa}, que se divide en los siguientes pasos:
+\begin{enumerate}
+	\item Paso 1
+
+\end{enumerate}
+
+\subsection{Regresión aplicada a la estimación}
