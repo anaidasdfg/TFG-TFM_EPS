@@ -135,14 +135,23 @@ P_{R}=\frac{P_{T}\lambda ^{2}G^{2}\sigma_{0}S}{(4\pi ) ^{3}L_{s}L_{a}R^{4}}
 	\item Temperatura del aire, o el calor acumulado durante todo el proceso de desarrollo de un cultivo, tiene influencia de manera directa en la duración de los distintos estados fenológicos del mismo. Concretamente en los cultivos de arroz tiene un impacto notable, por lo que se considera otro de los parámetros a tener en cuenta para su monitorización y en la elaboración de modelos de predicción \cite{Juanma2016}.
 \end{itemize} 
 \subsection{Extracción de información de imágenes \gls{sar}}
-\par Las imágenes \gls{sar} dan una información del coeficiente de backscattering ($sigma_{0}$), según una polarización de onda emitida y recibida, siendo este representado en ejes de azimuth y rango, como se ha explicado anteriormente. Para este proyecto se van a tener en cuenta estas imágenes, de libre acceso por la \gls{esa}, con los canales de polarización VV y VH, esto es, emisión vertical y recepción tanto vertical como horizontal. Se ha elegido la polarización vertical ya que es la que el programa de los satélites de Sentinel-1 ofrece sobre Europa, y, además, es más sensible al crecimiento de los cultivos de arroz por la verticalidad de sus tallos. Por otra parte, las imágenes de polarización horizontal recibida proporciona información extra que puede ser útil y que es bastante semejante a la obtenida en HV, es decir, emisión horizontal y recepción vertical, por lo que se abarca la mayor parte de información útil posible. 
+\par Las imágenes \gls{sar} dan una información de el coeficiente de reflexión de la superficie observada, según una polarización de onda emitida y recibida, siendo este representado en ejes de azimuth y rango, como se ha explicado anteriormente. Para este proyecto se van a tener en cuenta estas imágenes, de libre acceso por la \gls{esa}, con los canales de polarización VV y VH, esto es, emisión vertical y recepción tanto vertical como horizontal. Se ha elegido la polarización vertical ya que es la que el programa de los satélites de Sentinel-1 ofrece sobre Europa, y, además, es más sensible al crecimiento de los cultivos de arroz por la verticalidad de sus tallos. Por otra parte, las imágenes de polarización horizontal recibida proporciona información extra que puede ser útil y que es bastante semejante a la obtenida en HV, es decir, emisión horizontal y recepción vertical, por lo que se abarca la mayor parte de información útil posible. 
 \\
-\par Las imágenes \gls{sar} pueden ser adquiridas con distintos formatos. El que se va a utilizar aquí es el formato \gls{grd} *¿Resolución?* por conveniencia para este estudio. Este formato consiste en imágenes \gls{sar} multi-look (reducción de speckle) y proyectadas al rango de la tierra utilizando un modelo de elipsoide de la Tierra. La información de la fase es suprimida, lo cual no es un problema para este estudio, ya que no era uno de los parámetros clave, y los píxeles que presenta la imagen son aproximadamente cuadrados *dimensiones* \cite{copData}. 
+\par Las imágenes \gls{sar} pueden ser adquiridas con distintos formatos. El que se va a utilizar aquí es el formato \gls{grd} *¿Resolución?* por conveniencia para este estudio. Este formato consiste en imágenes \gls{sar} multi-look (reducción de speckle) y proyectadas al rango de la tierra utilizando un modelo de elipsoide de la Tierra. La información de la fase es suprimida, lo cual no es un problema para este estudio, ya que no era uno de los parámetros clave, y los píxeles que presenta la imagen son aproximadamente cuadrados \cite{copData}. 
 \\
 \par El primer problema reconocible en la obtención de estas imágenes es su falta de correspondencia con las coordenadas geográficas comúnmente utilizadas, además de las dimensiones y orientación de estas, ya que las imágenes abarcan áreas de mucho mayor tamaño a las áreas de cultivos aquí estudiados, y la orientación no es totalmente paralela al eje polar de la Tierra, sino que presenta cierta inclinación. Para solucionar todo ello, se realiza un pre-procesado desarrollado por el Departamento de Física, Ingeniería de Sistemas y Teoría de la Señal de la Escuela Politécnica Superior, utilizando el software libre SNAP cedido por la \gls{esa}, que se divide en los siguientes pasos:
 \begin{enumerate}
-	\item Paso 1
-
+	\item Lectura de las imágenes.
+	\item Actualización de la información orbital en las imágenes cargadas.
+	\item Cancelación de ruido térmico.
+	\item Recorte del área de interés.
+	\item Calibración radiométrica para obtener de salida de ambos canales (VH y VV) el formato $\sigma_{0}$.
+	\item Filtrado de speckle.
+	\item Conversión de escala lineal a dB.
+	\item Geo-referenciación: genera un mapa en una rejilla uniforme de
+coordenadas cartográficas con tamaño de píxel elegido de aproximadamente 10 m para cada coordenada (latitud y longitud).
+	\item Escritura del producto en formato propio de SNAP: DEAM-DIMAP 
 \end{enumerate}
+\par Esto se realiza tantas veces como número de imágenes de distintas fechas se hayan obtenido. Para finalizar el procesamiento, se ajustan unas imágenes con otras para que todas estén referenciadas a las mismas coordenadas cartográficas en los mismos píxeles. 
 
 \subsection{Regresión aplicada a la estimación}
