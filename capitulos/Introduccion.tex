@@ -5,7 +5,7 @@
 % Contacto: info@jmrplens.com / Telegram:@jmrplens
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\chapter{Introducción}
+\chapter{Capítulo 1. Introducción}
 \label{introduccion}
 \par La telecomunicación se puede definir como toda transmisión y/o emisión y recepción de señales que representan signos, escritura, imágenes y sonidos o información de cualquier naturaleza por hilo, radioelectricidad, medios ópticos u otros sistemas electromagnéticos \cite{RAI}. Esto permite compartir información útil a distancia y engloba un amplio conjunto de sistemas y tecnologías. 
 \\
@@ -13,17 +13,11 @@
 
 \section{Contexto}
 \par Las telecomunicaciones forman parte de nuestro día a día y tienen cometidos de lo más variados: desde mandar un simple mensaje hasta comunicarse con una estación espacial, pero todos ellos engloban el manejo o el hecho de compartir información a distancia. 
-
-\subsection{Tecnología}
-\par Dentro de los sistemas de telecomunicación encontramos la radio, la televisión, la telefonía fija y móvil, Internet por banda ancha o datos, la radionavegación o la teledetección, entre otros. Todos ellos utilizan ondas electromagnéticas para su transmisión, aunque estas se propaguen mediante distintos medios, que pueden ser guiados o no guiados, y con las modulaciones que se adapten a las necesidades de cada sistema. 
 \\
-\par Este proyecto se va a centrar en el sistema de la teledetección, definido como la adquisición de información un objeto, área o fenómeno, ya sea usando instrumentos de grabación o instrumentos de escaneo en tiempo real inalámbricos o que no están en contacto directo con el objeto, según la \gls{rai} \cite{RAI}. Estos instrumentos van a medir la radiación electromagnética que emiten o reflejan los objetos observados. Algunos de estos pueden ser cámaras fotográficas, láseres, sistemas de radar o sonar, y pueden ser pasivos o activos según la fuente de la radiación original.
+\par Dentro de los sistemas de telecomunicación encontramos el sistema de la teledetección, definido como la adquisición de información un objeto, área o fenómeno, con instrumentos que no están en contacto directo con el objeto, según la \gls{rai} \cite{RAI}. Estos instrumentos van a medir la radiación electromagnética que emiten o reflejan los objetos observados. Algunos pueden ser, por ejemplo, las cámaras fotográficas o los sistemas de radar o sonar.
 \\
-\par Los instrumentos de medida tienen la ventaja de poder estar situados a grandes distancias de la localización donde se quiera realizar la detección. Es por ello que se encuentran normalmente en satélites, aviones, barcos, etcétera, dependiendo de lo que se quiera medir. Las aplicaciones que engloba la teledetección son muy numerosas y suelen estar enfocadas a estudios científicos de ciertas áreas de la Tierra. 
-\subsection{Caso particular a tratar}
-\par Una vez introducida la tecnología existente para el área de este proyecto, concretamos cuál va a ser nuestra situación.
+\par Las imágenes obtenidas desde satélite son una gran fuente de información para aplicaciones de teledetección, como son, por ejemplo, las predicciones meteorológicas, la realización de mapas topográficos o la monitorización de cultivos. Esta última, en la que nos vamos a centrar, requiere disponer de información periódica suficiente durante el periodo de tiempo que engloba el desarrollo completo del cultivo. En la monitorización de cultivos se encuentra la estimación del estado de los mismos, así como de variables descriptoras de este estado (biomasa, altura, etc.), obtenidas a partir de imágenes que pueden ser analizadas de forma independiente o utilizando técnicas que aprovechen las series temporales de datos para la estimación. Estas técnicas son muy útiles en casos como estos en los que la estimación va estrechamente ligada al transcurso del tiempo. 
 \\
-\par Ya que la aplicación en la que se mueve este proyecto es la agrícola, concretamente la observación y adquisición de información de cultivos para su posterior estudio fenológico, la tecnología que se va a utilizar para ello son sistemas radar (radio detection and ranging), sistema activo, situado en un satélite artificial denominado Sentinel-1, del Programa Copérnico de la \gls{aema}. Estas tecnologías serán explicadas más detalladamente en el capítulo \ref{marcoteorico}.
 \\
 \par En este área ya hay estudios previos que, a partir de datos similares que comparten estos programas, se obtiene un estado de la fenología aproximado de los cultivos observados. Algunos estudios previos precedentes y que sirven de base para este \gls{tfg} son:
 \\
@@ -39,7 +33,7 @@
 \\
 
 \section{Objetivos}
-Contribuyendo a la línea de investigación de los artículos \cite{Juanma2014} y \cite{Juanma2016}, cuyos autores Juan Manuel López Sanchéz y Tomás Martínez Marín son el tutor y co-tutor de este \gls{tfg}, respectivamente, el objetivo general sería estimar el estado de cultivos de arroz mediante el análisis series temporales con técnicas de aprendizaje automático y su unión a la línea de procesamiento original.
+Contribuyendo a la línea de investigación de los artículos \cite{Juanma2014} y \cite{Juanma2016}, cuyos autores Juan Manuel López Sanchéz y Tomás Martínez Marín son el tutor y co-tutor de este \gls{tfg}, respectivamente, el objetivo general es estimar el estado de cultivos de arroz mediante el análisis series temporales con técnicas de aprendizaje automático y su unión a la línea de procesamiento original.
 \\
 \par Los objetivos concretos serían: 
 \begin{itemize}
@@ -49,10 +43,16 @@ Contribuyendo a la línea de investigación de los artículos \cite{Juanma2014} 
 \end{itemize}
 
 \section{Estructura de la memoria}
-\par La estructura de la memoria se va a dividir en 3 secciones principales las cuales son: marco teórico, metodología y resultados. Además de unas conclusiones finales valorando los resultados obtenidos.
+\par La estructura de la memoria se va a dividir en 3 capítulos principales las cuales son: marco teórico, metodología y resultados. Además de unas conclusiones finales valorando los resultados obtenidos.
 \\
-\par En el marco teórico se expondrá toda la teoría necesaria para la compresión de este proyecto en términos técnicos y dentro de un contexto y una investigación previa que este continúa. Veremos en él las técnicas de regresión y \gls{ml} existentes y candidatas para ser utilizadas, teoría de la teledetección, incluyendo cómo funcionan los sistemas radar, en concreto los \gls{sar}, qué información obtenemos y cómo interpretarla, y, finalmente, la estimación de parámetros físicos de los cultivos a partir de la información obtenida mediante regresión, qué parámetros son clave y qué procesamiento necesita la información para llegar a obtener estimaciones fiables y útiles. 
-\\
+\par En el marco teórico se expondrá toda la teoría necesaria para la compresión de este proyecto en términos técnicos y dentro de un contexto y una investigación previa que este continúa. Veremos en él 3 secciones:
+\begin{itemize}
+	\item Teledetección, incluyendo cómo funcionan los sistemas radar, en concreto los \gls{sar}, qué información obtenemos de ellos en ciertos programas de satélites y las técnicas de detección que determinan cómo interpretar esta información.
+	\item Técnicas de regresión y Machine Learning, donde se encuentra la clasificación de las distintas técnicas de \gls{ml}, algunos modelos y sus aplicaciones existentes, y, por último, el análisis mediante regresión. 
+	\item Estimación de parámetros físicos de cultivos mediante
+teledetección, donde se presentan la metodología general basada en el espacio de estados, los parámetros físicos de los cultivos con los que se puede trabajar y la estimación de estos mediante regresión. 
+\end{itemize}
+
 \par En cuanto a la metodología, se incluirán tanto las técnicas y métodos concretos que se van a utilizar, por qué motivos y qué esperamos obtener de ellos, como el software, el lenguaje de programación que vamos a emplear, las herramientas utilizadas y las bases de datos con las que vamos a trabajar, incluyendo su procedencia y procesamiento previo. 
 \\
 \par Por último, el apartado de resultados expondrá los resultados obtenidos con las diferentes técnicas de regresión y aprendizaje automático para los mismos datos. Estos resultados podrán ser fácilmente evaluados ya que se contrastarán, además, con los datos reales tomados en tierra de los mismos cultivos que se presentan en el dataset. 
