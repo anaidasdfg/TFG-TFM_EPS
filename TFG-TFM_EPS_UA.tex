@@ -35,6 +35,12 @@
 \newcommand{\miFacultadCorto}{EPS UA}
 \newcommand{\miUniversidad}{\protect{Universidad de Alicante}}
 \newcommand{\miUbicacion}{Alicante}
+%\newcommand{\mychapter}[2]{
+%    \setcounter{chapter}{#1}
+%    \setcounter{section}{0}
+%    \chapter*{#2}
+%    \addcontentsline{toc}{chapter}{#2}
+%}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % INDICA TU TITULACIÓN
@@ -107,13 +113,6 @@ pdftitle = {Informe TFG},
 \listoftables		% Índice de tablas
 \lstlistoflistings	% Índice de códigos
 
-%%%%
-% CONTENIDO. LISTA DE ACRÓNIMOS. Comenta las líneas si no lo deseas incluir.
-%%%%
-% Incluye el listado de acrónimos utilizados en el trabajo. 
-\printglossary[style=modsuper,type=\acronymtype,title={Lista de Acrónimos y Abreviaturas}]
-% Añade el resto de acrónimos si así se desea. Si no elimina el comando siguiente
-\glsaddallunused 
 
 % Inicia la numeración habitual.
 \mainmatter
@@ -134,7 +133,13 @@ pdftitle = {Informe TFG},
 \bibliographystyle{biblio}
 \bibliography{bibliografia/bibliografia} % Archivo que contiene la bibliografía
 
-
+%%%%
+% CONTENIDO. LISTA DE ACRÓNIMOS. Comenta las líneas si no lo deseas incluir.
+%%%%
+% Incluye el listado de acrónimos utilizados en el trabajo. 
+\printglossary[style=modsuper,type=\acronymtype,title={Lista de Acrónimos y Abreviaturas}]
+% Añade el resto de acrónimos si así se desea. Si no elimina el comando siguiente
+\glsaddallunused 
 
 %%%%
 % CONTENIDO. Anexos - Añade o elimina según tus necesidades
