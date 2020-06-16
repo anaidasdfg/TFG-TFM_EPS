@@ -144,7 +144,9 @@ z(t) = h(x(t),t,w(t))
 \end{equation}
 \par El vector de estados $x(t)$ es el vector de $n$ variables de estado que describe el sistema en un momento determinado $t$, por lo que el espacio de estados dispone de $n$ dimensiones. Las funciones que aportan el ratio de cambio para cada estado está representado por $f()$ y el ruido en la evolución es $v(t)$. $z(t)$ representa el vector de salida, donde $w(t)$ es el ruido, y $h(t)$ la relación entre el vector de estados y la observación $z(t)$.
 \\
-\par Los dos estados en los que se divide este algoritmo son predicción y actualización. La actualización se produce cuando existe información observable nueva, esta se introduce al sistema mediante una extensión del filtro de Kalman y genera un nuevo estado y una matriz de transiciones, la cual representa la probabilidad de los siguientes posibles estados. La información que utiliza proviene de un radar polarimétrico del satélite Radsat-2 y los cultivos son 3 tipos de cereales. 
+\par Los dos estados en los que se divide este algoritmo son predicción y actualización. La actualización se produce cuando existe información observable nueva, esta se introduce al sistema mediante una extensión del filtro de Kalman y genera un nuevo estado y una matriz de transiciones, la cual representa la probabilidad de los siguientes posibles estados.
+\\
+\par Para la creación del modelo de evolución se utilizan los mismo observables polarimétricos (información del radar polarimétrico, vertical (V) y horizontal (H), del satélite Radsat-2) que para las actualizaciones. Los valores de este modelo no son exactamente la escala \gls{bbch} ya que no hay un registro continuo para ello pero están discretizados y agrupados en rangos equivalentes a valores fenológicos. Estas agrupaciones o clusters van ajustando su centro con las actualizaciones de los observables. La estimación, entonces, se realiza combinando la información de este modelo, una vez que está generado y conociendo la información temporal del cultivo a estimar, con la información observable por medio de un \gls{ekf}.
 \\
 \begin{itemize}
 
