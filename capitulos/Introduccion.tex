@@ -22,22 +22,6 @@
 \par En la \gls{ua}, el grupo de investigación \gls{sst} ha diseñado un marco de trabajo sobre este tema basado en espacio de estados, que permite combinar de forma óptima los modelos de evolución esperable de los cultivos con los datos de otras fuentes como las imágenes \gls{sar} de satélite o la temperatura acumulada medida por una estación meteorológica. 
 \\
 \par Hasta la fecha, el modelo de observación utilizado que relacionaba las observaciones proporcionadas por las imágenes \gls{sar} con el estado fenológico de los cultivos era bastante simplificado y sus resultados no eran óptimos. Aquí entra el propósito de este \gls{tfg}, contribuir a su optimización mediante la generación de modelos de observación más complejos para las imágenes \gls{sar}. Estos modelos están basados en regresión con técnicas de machine learning que introduzcan la información de estas imágenes en el modelo de espacio de estados mencionado previamente. 
-\\
-\\
-\\
-
-\par En este área ya hay estudios previos que, a partir de datos similares que comparten estos programas, se obtiene un estado de la fenología aproximado de los cultivos observados. Algunos estudios previos precedentes y que sirven de base para este \gls{tfg} son:
-\\
-\begin{itemize}
-    \item \cite{Juanma2014}, artículo de 2014 que trata de estimar el estado fenológico de cultivos en tiempo real empleando espacio de estados y técnicas de sistemas dinámicos utilizando información del pasado y actualizaciones y, finalmente una extensión del filtro de Kalman. La información que utiliza proviene de un radar polarimétrico del satélite Radsat-2 y los cultivos son 3 tipos de cereales. 
-    \\
-    \item \cite{Juanma2016}, artículo de 2016 que trata, de estimar el \gls{ndvi}, el cual representa el estado de la fenología, en tiempo real empleando filtros de partículas para integrar las dos fuentes de información utilizadas: imágenes \gls{sar} y temperatura del aire registrada. El satélite del que se obtiene la información es el TerraSAR-X y los cultivos observados son arrozales, como va a ser nuestro caso. Este obtienen resultados algo mejores que en el anterior artículo y se utiliza la misma tecnología que encontramos en este proyecto: \gls{sar}. 
-    \\
-    \item \cite{artRF}, artículo de 2019 todavía más similar al objetivo de este proyecto, en él se estima el estado fenológico de distintos tipos de cultivos utilizando imágenes \gls{sar} proporcionadas por el satélite RADARSAT-2 y el método \gls{rf} para series temporales, que es uno de los elegidos también para este proyecto. 
-\end{itemize} 
-
-\par En resumen, para este proyecto en particular, el cultivo observado son arrozales, los datos empleados son imágenes \gls{sar} de los satélites Sentinel-1A y Sentinel-1B con ciclos periódicos de 6 días teniendo en cuenta ambos a partir de 2016, y las técnicas de estimación se basarán en las regresiones de series temporales y técnicas de aprendizaje automático. 
-\\
 
 \section{Objetivos}
 Contribuyendo a la línea de investigación de los artículos \cite{Juanma2014} y \cite{Juanma2016}, cuyos autores Juan Manuel López Sanchéz y Tomás Martínez Marín son el tutor y co-tutor de este \gls{tfg}, respectivamente, el objetivo general es estimar el estado de cultivos de arroz mediante el análisis series temporales con técnicas de aprendizaje automático y su unión a la línea de procesamiento original.

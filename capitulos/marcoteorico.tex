@@ -114,11 +114,9 @@ Y_{t}=\beta _{0}+\beta _{1} X_{1}+\beta _{2} X_{2}+...+\beta _{N} X_{N}+\varepsi
 \par A parte de las regresiones lineales y no lineales mencionados, también encontramos otros métodos de regresión como son los mínimos errores absoluto (bastante similar al \gls{mmc}), la regresión no paramétrica o la regresión lineal bayesiana.
 
 \section{Estimación de parámetros físicos de cultivos mediante teledetección}
-\par A continuación, se van a presentar los conceptos físicos que definen el estado de desarrollo de los cultivos, para comprender cuáles son los parámetros clave y objetivos de este proyecto. Posteriormete, se expone la información útil extraíble de las imágenes \gls{sar}, a partir de la cuál se va a trabajar para el objetivo anterior. Por último, se verá la aplicación de las técnicas de regresión a los datos obtenidos para elaborar un modelo representativo del estado fenológico de un cultivo.
-
-\subsection{Metodología general basada en espacio de estados}
-\subsection{Parámetros físicos de la fenología}
-\par La fenología es la ciencia que estudia la relación entre los factores climáticos y los ciclos de los seres vivos \citep{feno}. Esto es, el estudio del desarrollo de plantas y animales en relación con parámetros ambientales. Este proyecto se centrará en el estudio fenológico de plantas, en concreto de cultivos de arroz, por lo que se va a profundizar en las características fenológicas que los describen. Algunos de los parámetros clave son los siguientes: 
+\par A continuación, se van a presentar los conceptos físicos que definen el estado de desarrollo de los cultivos, para comprender cuáles son los parámetros clave y utilizados en el marco de investigación. Una vez introducidos estos, se expone el concepto de la técnica utilizada hasta el momento, los modelos de evolución y observación. Por último, se verá la aplicación de las técnicas de regresión a los datos obtenidos para elaborar un modelo representativo del estado fenológico de un cultivo.
+\\
+\par La fenología es la ciencia que estudia la relación entre los factores climáticos y los ciclos de los seres vivos \citep{feno}. Esto es, el estudio del desarrollo de plantas y animales en relación con parámetros ambientales. Este proyecto se centra en el estudio fenológico de plantas, en concreto de cultivos de arroz. Algunos de los parámetros descriptores clave utilizados en esta investigación son los siguientes: 
 \begin{itemize}
 	\item Escala \gls{bbch}, que recibe su nombre por los participantes en su estudio y desarrollo, es una escala numérica de intervalo 0-9 que describe la fenología \cite{bbch}. Cada valor numérico corresponde a un estado de desarrollo, desde la germinación o primeros brotes, correspondientes al estado 0, hasta la senectud, estado 9. Cada estado puede estar dividido hasta en 10 sub-etapas. El rango de que cada etapa abarca, concretamente para los cultivos de arroz, se puede observar en la tabla *insertar tabla* \cite{bbcht}. Para que uno de estos estados sea considerado el nivel general de una parcela, no solo tiene que ser este estado el mayoritario, sino que debe abarcar más del 50\% del cultivo. 
 	\item \gls{ndvi}, enunciado anteriormente, es un observable proporcionado por los sensores ópticos que suele ser usado como índice de vegetación de diferencia normalizada, para estimar la cantidad, calidad y desarrollo de la vegetación con base a la medición de la intensidad de la radiación de ciertas bandas del espectro electromagnético en ella. Estas bandas son concretamente las bandas del rojo y del infrarrojo cercano, con rangos de  reflexión entre 0 y 1 cada una de ellas. El coeficiente gls{ndvi} se obtiene según la fórmula \ref{eq:ndvi}, conformando un rango entre -1 y 1, y representa el desarrollo de la vegetación, ya que la contribución de la banda infrarroja cercana está ligada a la reflexión de la celulosa, por tanto a las áreas verdes y frondosas, mientras que la banda roja es mucho menos sensible a estas contribuciones y más a la absorción de clorofila. En resumen, un buen desarrollo vegetal tiene valores de \gls{ndvi} más cercanos a la unidad positiva \citep{ndvi}. 
@@ -127,6 +125,25 @@ Y_{t}=\beta _{0}+\beta _{1} X_{1}+\beta _{2} X_{2}+...+\beta _{N} X_{N}+\varepsi
 	\end{equation}
 	\item Temperatura del aire, o el calor acumulado durante todo el proceso de desarrollo de un cultivo, es una fuente de observaciones para el que existen modelos de observación que lo relacionan con el estado fenológico. Concretamente en los cultivos de arroz tiene un impacto notable, por lo que se considera otro de los parámetros a tener en cuenta en su monitorización y en la elaboración de modelos de predicción \cite{Juanma2016}.
 \end{itemize} 
+
+
+\subsection{Metodología general basada en espacio de estados}
+
+
+\par En este área ya hay estudios previos que, a partir de datos similares que comparten estos programas, se obtiene un estado de la fenología aproximado de los cultivos observados. Algunos estudios previos precedentes y que sirven de base para este \gls{tfg} son:
+\\
+\begin{itemize}
+    \item \cite{Juanma2014}, artículo de 2014 que trata de estimar el estado fenológico de cultivos en tiempo real empleando espacio de estados y técnicas de sistemas dinámicos utilizando información del pasado y actualizaciones y, finalmente una extensión del filtro de Kalman. La información que utiliza proviene de un radar polarimétrico del satélite Radsat-2 y los cultivos son 3 tipos de cereales. 
+    \\
+    \item \cite{Juanma2016}, artículo de 2016 que trata, de estimar el \gls{ndvi}, el cual representa el estado de la fenología, en tiempo real empleando filtros de partículas para integrar las dos fuentes de información utilizadas: imágenes \gls{sar} y temperatura del aire registrada. El satélite del que se obtiene la información es el TerraSAR-X y los cultivos observados son arrozales, como va a ser nuestro caso. Este obtienen resultados algo mejores que en el anterior artículo y se utiliza la misma tecnología que encontramos en este proyecto: \gls{sar}. 
+    \\
+    \item \cite{artRF}, artículo de 2019 todavía más similar al objetivo de este proyecto, en él se estima el estado fenológico de distintos tipos de cultivos utilizando imágenes \gls{sar} proporcionadas por el satélite RADARSAT-2 y el método \gls{rf} para series temporales, que es uno de los elegidos también para este proyecto. 
+\end{itemize} 
+
+\par En resumen, para este proyecto en particular, el cultivo observado son arrozales, los datos empleados son imágenes \gls{sar} de los satélites Sentinel-1A y Sentinel-1B con ciclos periódicos de 6 días teniendo en cuenta ambos a partir de 2016, y las técnicas de estimación se basarán en las regresiones de series temporales y técnicas de aprendizaje automático. 
+\\
+
+
 \subsection{Extracción de información de imágenes \gls{sar}}
 \par Las imágenes \gls{sar} dan una información de el coeficiente de reflexión de la superficie observada, según una polarización de onda emitida y recibida, siendo este representado en ejes de azimuth y rango, como se ha explicado anteriormente. Para este proyecto se van a tener en cuenta estas imágenes, de libre acceso por la \gls{esa}, con los canales de polarización VV y VH, esto es, emisión vertical y recepción tanto vertical como horizontal. Se ha elegido la polarización vertical ya que es la que el programa de los satélites de Sentinel-1 ofrece sobre Europa, y, además, es más sensible al crecimiento de los cultivos de arroz por la verticalidad de sus tallos. Por otra parte, las imágenes de polarización horizontal recibida proporciona información extra que puede ser útil y que es bastante semejante a la obtenida en HV, es decir, emisión horizontal y recepción vertical, por lo que se abarca la mayor parte de información útil posible. 
 \\
@@ -148,6 +165,8 @@ coordenadas cartográficas con tamaño de píxel elegido de aproximadamente 10 m
 \par Esto se realiza tantas veces como número de imágenes de distintas fechas se hayan obtenido. Para finalizar el procesamiento, se ajustan unas imágenes con otras para que todas estén referenciadas a las mismas coordenadas cartográficas en los mismos píxeles. Una vez finalizado este proceso, las imágenes están preparadas para tratar su información información de manera más sencilla.  
 
 \subsection{Regresión aplicada a la estimación}
+\par Existen distintas variables biofísicas que están directamente relacionadas con la ALTURA
+\\
 \par Una vez presentados los parámetros clave para determinar el estado de desarrollo de un cultivo, más concretamente de los arrozales, y la  información útil extraíble de las imágenes \gls{sar}, se va a exponer cómo se relacionan estos parámetros entre sí, haciendo uso de la regresión. La regresión busca generar un modelo de predicción del fenómeno que se está estudiando a partir de una información de la que el fenómeno depende. En este caso, ese fenómeno es el estado fenológico de los cultivos de arroz y la información a partir de la cuál se va a generar este modelo son los coeficientes de backscattering obtenidos.
 \\
 \par A la hora de crear un modelo a partir de regresión, se debe considerar la evolución que se quiere estudiar para elegir la información que se va a utilizar. Para el estudio de la fenología se debe escoger información que complete un periodo de desarrollo desde el primer estado de la siembra del cultivo, hasta la madurez y recogida del producto, información que debe presentar una resolución temporal suficiente para que sean distinguibles las distintas etapas dentro del proceso. A esto se suma que para la generación de un modelo fiable este tiene que ajustarse con un número determinado de ciclos enteros de información, en mayor o menor número dependiendo de la fiabilidad y constancia de los mismos. 
