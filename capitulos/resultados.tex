@@ -7,7 +7,17 @@
 
 \chapter{Resultados}
 \label{resultados}
-\par Los resultados generales obtenidos para cada uno de los casos mencionados anteriormente, una vez optimizados los datos utilizados y los parámetros del regresor, se pueden considerar bastante buenos. Las evaluaciones de estos resultados se realizan con indicadores de error como el la raíz del error cuadrático medio (\gls{rmse}) o el error al cuadrado ($R^2$) para las predicciones del set de test, siendo las salidas del modelo una predicción única, y no las probabilidades para cada salida. 
+\par Los resultados generales obtenidos para cada uno de los casos mencionados anteriormente, una vez optimizados los datos utilizados y los parámetros del regresor, se pueden considerar bastante buenos. Las evaluaciones de estos resultados se realizan con indicadores de error como la media del error absoluto (\gls{mae}), correpondiente a la fórmula \ref{eq:MAE}, la raíz del error cuadrático medio (\gls{rmse}), fómula \ref{eq:RMSE} o el coeficiente de determinación ($R^2$), fórmula \ref{eq:R2} para las predicciones del set de test, siendo las salidas del modelo una predicción única, y no las probabilidades para cada salida.
+
+\begin{equation}\label{eq:MAE}
+\gls{mae} = \frac{\sum_{i=1}^{n} \left | y_i -x_i \right |}{n}
+\end{equation} 
+\begin{equation}\label{eq:RMSE}
+\gls{rmse} = \sqrt{\frac{\sum_{i=1}^{n}(y_i- x_i )^2}{n}}
+\end{equation}
+\begin{equation}\label{eq:R2}
+R^2 = \frac{\sigma^2_{XY}}{\sigma^2_X\sigma^2_Y}
+\end{equation}
 
 \section{Resultados para método por parcelas}
 \section{Resultados para método por píxeles} 
