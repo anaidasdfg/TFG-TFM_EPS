@@ -7,17 +7,27 @@
 
 \chapter{Resultados}
 \label{resultados}
-\par Los resultados generales obtenidos para cada uno de los casos mencionados anteriormente, una vez optimizados los datos utilizados y los parámetros del regresor, se pueden considerar bastante buenos. Las evaluaciones de estos resultados se realizan con indicadores de error como la media del error absoluto (\gls{mae}), correpondiente a la fórmula \ref{eq:MAE}, la raíz del error cuadrático medio (\gls{rmse}), fómula \ref{eq:RMSE} o el coeficiente de determinación ($R^2$), fórmula \ref{eq:R2} para las predicciones del set de test, siendo las salidas del modelo una predicción única, y no las probabilidades para cada salida.
+\par Los resultados generales obtenidos se pueden considerar bastante buenos. En la siguiente tabla \ref{tab:error} se pueden ver la evaluación de los resultados según su \gls{mae}, \gls{rmse} y el coeficiente de determinación ($R^2$).
 
-\begin{equation}\label{eq:MAE}
-\gls{mae} = \frac{\sum_{i=1}^{n} \left | y_i -x_i \right |}{n}
-\end{equation} 
-\begin{equation}\label{eq:RMSE}
-\gls{rmse} = \sqrt{\frac{\sum_{i=1}^{n}(y_i- x_i )^2}{n}}
-\end{equation}
-\begin{equation}\label{eq:R2}
-R^2 = \frac{\sigma^2_{XY}}{\sigma^2_X\sigma^2_Y}
-\end{equation}
+\begin{table}[]\label{tab:error}
+\begin{tabular}{lccc}
+\multicolumn{4}{c}{Datos de entrada a nivel de pixel}                            \\ \hline
+\multicolumn{1}{l|}{}                            & BBCH  & Altura & BBCH\&Altura \\ \cline{2-4} 
+\multicolumn{1}{l|}{$R^2$}                       & 0.45  & 0.52   & 0.45         \\
+\multicolumn{1}{l|}{\textbackslash{}gls\{rmse\}} & 22.23 & 19.89  & 21.17        \\
+\multicolumn{1}{l|}{\textbackslash{}gls\{mae\}}  & 17.26 & 15.64  & 16.58       
+\end{tabular}
+\end{table}
+
+\begin{table}[]\label{tab:error2}
+\begin{tabular}{lccc}
+\multicolumn{4}{c}{Datos de entrada a nivel de parcela}                            \\ \hline
+\multicolumn{1}{l|}{}                            & BBCH  & Altura & BBCH\&Altura \\ \cline{2-4} 
+\multicolumn{1}{l|}{$R^2$}                       & 0.77  & 0.66   & 0.70 \\
+\multicolumn{1}{l|}{\textbackslash{}gls\{rmse\}} & 14.27 & 17.55  & 15.69 \\
+\multicolumn{1}{l|}{\textbackslash{}gls\{mae\}}  & 10.59 & 13.87  & 12.63       
+\end{tabular}
+\end{table}
 
 \section{Resultados para método por parcelas}
 \section{Resultados para método por píxeles} 
