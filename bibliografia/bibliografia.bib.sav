@@ -167,7 +167,7 @@
 @Online{sentinelhub,
   author = {Sinergise Laboratory for geographical information systems, Ltd.},
   editor = {Sinergise Laboratory for geographical information systems, Ltd.},
-  title  = {Sentinel Hub Playground},
+  title  = {S},
   url    = {https://apps.sentinel-hub.com/sentinel-playground/?source=S2&lat=40.4&lng=-3.730000000000018&zoom=12&preset=1-NATURAL-COLOR&layers=B01,B02,B03&maxcc=20&gain=1.0&gamma=1.0&time=2019-12-01%7C2020-06-29&atmFilter=&showDates=false},
 }
 
