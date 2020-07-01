@@ -36,5 +36,18 @@
 \par Como se puede observar, para las 3 posibles salidas para las que se han diseñado los modelos, el método que emplea datos de entrada a nivel de parcela consigue notablemente mejores resultados. Se obtienen valores de coeficiente de determinación más cercanos a 1, valor ideal, apreciándose en el modelo de predicción de \gls{bbch} una mejora para el caso de parcelas de un 71.1\% con respecto al de pixel. Lo mismo ocurre en los índices de error, cuyo valor óptimo es 0: se obtienen valores inferiores para el método a nivel de parcela en todos los casos estudiados.
 \\
 \par Los mejores resultados obtenidos para el procesamiento a nivel de parcelas pueden recaer en que todos los datos recogidos de verdad de tierra se presentan por parcelas, por lo que no existen unos datos para contrastar cada pixel extraído de la información de satélite con el terreno. Dentro de cada parcela el cultivo no tiene porqué desarrollarse de manera homogénea, pero la información recibida de este consta del valor de \gls{bbch} (con el requisito de ser el correcto para al menos el 50\% del cultivo) y la altura generalizados por parcela, además de los máximos y mínimos de cada uno, por lo que las variaciones que se puede hallar en distintas zonas del cultivo no se tienen en cuenta. Por ello, el método de pixel implementado asigna un solo valor de salida para conjuntos de píxeles de la misma parcela, los cuales pueden estar representando unos niveles de \gls{bbch} o altura distintos, y esto conlleva un ajuste del modelo erróneo y, por tanto, peores índices estadísticos de evaluación. Aún así, este método no ha sido descartado, ya que el análisis a nivel de pixel es de gran interés para detectar esas variaciones de desarrollo de un cultivo dentro de una misma parcela. 
-\section{Resultados para método por parcelas}
-\section{Resultados para método por píxeles} 
+\section{Método por parcelas}
+\subsection{Optimización}
+\begin{figure}[h]
+    \centering
+    \includegraphics[height=9cm]{archivos/tfg/opt_tree_bbch_mean} 
+    \caption{Optimización del número de árboles para \gls{rfr} en el modelo para \gls{bbch}}
+    \label{fig:opt_parcl}
+\end{figure}
+\par La optimización de los datos y parámetros utilizados en este método para cada caso se presentan en la tabla (), donde se pueden ver: la parcela utilizada para el periodo de test del modelo; siendo el resto de parcelas utilizadas en el entrenamiento, y el número de árboles óptimo para \gls{rfr}. 
+\subsection{Salidas del modelo}
+\subsection{Evaluación}
+\section{Método por píxeles} 
+\subsection{Optimización}
+\subsection{Salidas del modelo}
+\subsection{Evaluación}
