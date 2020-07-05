@@ -9,10 +9,10 @@
 \label{resultados}
 \section{Método por parcelas}
 \subsection{Optimización}
-\par La optimización de los datos de entrada tiene su base en la elección de los sets de parcelas de entrenamiento y test, siendo los mejores resultados para todos los casos el uso de un conjunto de 6 parcelas para entrenamiento y 1 para la evaluación. En cuanto a la optimización del regresor, se basa en la determinación del número de árboles que lo componen. La relación entre el número de árboles para un modelo y el coeficiente de determinación es un buen descriptor para la elección de este parámetro, como se presenta en la imagen de ejemplo \ref{fig:opt_parcl} con el caso de salida \gls{bbch}. En ella, se puede ver que una vez alcanzado cierto nivel de coeficiente, la mejora de este en relación al aumento del número de árboles no es significativa con respecto al costo computacional y a la complejidad del sistema que se crea. 
+\par La optimización de los datos de entrada tiene su base en la elección de las variables de entrada y de los sets de parcelas de entrenamiento y test. Los mejores resultados para todos los casos el uso de un conjunto de 6 parcelas para entrenamiento y 1 para la evaluación, y como datos de entrada al sistema todos los mencionados anteriormente: media por día y parcela de VV, VH y ratio VH/VV y la desviación estándar de cada uno de ellos. En cuanto a la optimización del regresor, se basa en la determinación del número de árboles que lo componen. La relación entre el número de árboles para un modelo y el coeficiente de determinación es un buen descriptor para la elección de este parámetro, como se presenta en la imagen de ejemplo \ref{fig:opt_parcl} con el caso de salida \gls{bbch}. En ella, se puede ver que una vez alcanzado cierto nivel de coeficiente, la mejora de este en relación al aumento del número de árboles no es significativa con respecto al costo computacional y a la complejidad del sistema que se crea. 
 \begin{figure}[h]
     \centering
-    \includegraphics[height=9cm]{archivos/tfg/opt_tree_bbch_mean} 
+    \includegraphics[height=9cm]{archivos/tfg/Mean/opt_tree_bbch_mean} 
     \caption{Optimización del número de árboles para \gls{rfr} en el modelo de salida \gls{bbch}\label{fig:opt_parcl}}
     
 \end{figure}
@@ -31,14 +31,54 @@ Número de árboles & 42       & 77       & 54
 \end{table}
 
 \par Como se puede observar, los 3 casos de este método constan de un número óptimo de árboles de, al menos, el mismo orden. Cabe destacar que el aumento de complejidad en el modelo, sobre todo en el caso de la altura como salida del sistema.  
-\subsection{Salidas del modelo}
-\subsection{Evaluación}
+\subsection{Salidas del modelo y evaluación}
+Como ya se ha comentado, las salidas del modelo son por defecto predicciones únicas, pero el marco de trabajo anterior demanda salidas en formato \gls{pdf} para ser integradas con el resto del modelo. En las figuras \ref{fig:pdf_b}, \ref{fig:pdf_h} y \ref{fig:pdf_bh} se puede apreciar cómo son algunas de estas salidas, siendo ejemplos para los 3 casos estudiados. 
+\\
+% Dos figuras sueltas una al lado de otra
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\linewidth]{archivos/tfg/Mean/TEST_PARC_PDF}
+\captionof{figure}{Ejemplo de salida \gls{pdf} normalizada del modelo para estimación de \gls{bbch}.\label{fig:pdf_b}}
+\end{figure}%
+\begin{figure}
+\centering
+\includegraphics[width=0.9\linewidth]{archivos/tfg/Mean/TEST_PARC_PDF_H}
+\captionof{figure}{Ejemplo de salida \gls{pdf} normalizada del modelo para estimación de la altura. \label{fig:pdf_h}}
+\end{figure}
+
+% Una figura con dos imágenes
+\begin{figure}[h]
+\centering
+\begin{subfigure}{0.8\textwidth}
+  \centering
+  \includegraphics[width=0.9\linewidth]{archivos/tfg/Mean/TEST_PARC_PDF_BH_B}
+  \caption{A subfigure}
+  \label{fig:sub1}
+\end{subfigure}
+\begin{subfigure}{0.8\textwidth}
+  \centering
+  \includegraphics[width=0.9\linewidth]{archivos/tfg/Mean/TEST_PARC_PDF_BH_H}
+  \caption{A subfigure}
+  \label{fig:sub2}
+\end{subfigure}
+\caption{Ejemplo de salidas \gls{pdf} normalizadas del modelo para estimación de \gls{bbch} y la altura. \label{fig:pdf_bh}}
+\end{figure}
+
+\par Las \gls{pdf}s se presentan normalizadas con respecto a la salida con mayor probabilidad. En estos ejemplos se puede ver como, aunque hay una salida que predomina con respecto al resto, no se excluyen las demás soluciones posibles. Esto facilita la integración con el modelo de predicción temporal ya que se pueden combinar ambas salidas \gls{pdf} para ver dónde coinciden y con qué probabilidad. En general, los resultados de la predicción temporal son bastante certeros, con oportunidad de fallo para ajustes finos en cultivos que hayan podido sufrir retrasos o adelantos en su desarrollo típico. Es ahí donde la contribución de este modelo es importante, aportando información extra en tiempo real y creando una predicción de cuáles serían los posibles estados de desarrollo en los que se encuentra el cultivo según la información actual de satélite. 
+\\
+\par Las 3 figuras \ref{fig:pdf_b}, \ref{fig:pdf_h} y \ref{fig:pdf_bh} han sido generadas con los mismos datos de entrada, es decir, misma parcela, fecha y datos de satélite, por lo que las salidas para los modelos generados de estimación de \gls{bbch} (Figura \ref{fig:pdf_b}) y altura (Figura \ref{fig:pdf_h}) como modelos independientes se pueden comparar con las salidas del modelo de estimación de ambas (Figura \ref{fig:pdf_bh}). 
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%
 \section{Método por píxeles} 
 \subsection{Optimización}
-\par La optimización de los datos de entrada para este método se realiza de igual manera que el anterior, coincidiendo los mejores resultados para todos los casos en el uso de un conjunto de 6 parcelas para entrenamiento y 1 para la evaluación. En cuanto a la optimización del regresor, se utiliza también la relación entre el número de árboles para un modelo y el coeficiente de determinación, presentado en la imagen de ejemplo \ref{fig:opt_pixl} con el caso de salida \gls{bbch}. En ella, se puede ver que una vez alcanzado cierto nivel de coeficiente, la mejora de este en relación al aumento del número de árboles no es significativa con respecto al costo computacional y a la complejidad del sistema que se crea. 
+\par La optimización de los datos de entrada para este método se realiza de igual manera que el anterior, coincidiendo los mejores resultados para todos los casos en el uso de un conjunto de 6 parcelas para entrenamiento y 1 para la evaluación y de igual manera para los datos de entrada, aunque la desviación estándar no aporta una gran mejora para este método. En cuanto a la optimización del regresor, se utiliza también la relación entre el número de árboles para un modelo y el coeficiente de determinación, presentado en la imagen de ejemplo \ref{fig:opt_pixl} con el caso de salida \gls{bbch}. En ella, se puede ver que una vez alcanzado cierto nivel de coeficiente, la mejora de este en relación al aumento del número de árboles no es significativa con respecto al costo computacional y a la complejidad del sistema que se crea. 
 \begin{figure}[h]
     \centering
-    \includegraphics[height=9cm]{archivos/tfg/opt_tree_bbch_pixel} 
+    \includegraphics[height=9cm]{archivos/tfg/Pixel/opt_tree_bbch_pixel} 
     \caption{Optimización del número de árboles para \gls{rfr} en el modelo de salida \gls{bbch}}
     \label{fig:opt_pixl}
 \end{figure}
@@ -58,8 +98,7 @@ Número de árboles & 46       & 48       & 47
 \par Como se puede observar, los 3 casos coinciden en el set de parcelas de entrenamiento y test con el que se obtienen mejores resultados. Probablemente esto se debe a anomalías en el desarrollo de algunas parcelas, las cuales, si se toman como set de test, el modelo no las habría podido tener en cuenta en el aprendizaje y el error en la predicción sería mayor. Los 3 casos de este método constan de un número óptimo de árboles muy similares, con una diferencia de 1 y 2 con respecto al caso menor. Cabe destacar que el aumento de complejidad, aunque escaso, en el modelo de salida de la altura, como ocurre para el método anterior. Además, tanto para la metodología por píxeles como por parcelas, se obtiene un número óptimo de árboles para el caso de 2 salidas intermedio a los óptimos para las mismas salidas en modelos independientes. Esto se debe a una compensación en la estimación de ambas variables, para que una variable sea óptima sin que su mejora sea a costa de la otra se llega a un valor intermedio en el que ninguna de las salidas está totalmente optimizada pero tienen el mejor resultado del sistema compartido completo. 
 
 
-\subsection{Salidas del modelo}
-\subsection{Evaluación}
+\subsection{Salidas del modelo y evaluación}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Comparativa de métodos}
