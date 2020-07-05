@@ -22,7 +22,7 @@
 \begin{table}[h]
 \centering
 \begin{tabular}{l|ccc}
-                  & BBCH     & Altura   & BBCH\&Altura \\ \hline
+                  & \gls{bbch}     & Altura   & \gls{bbch}\&Altura \\ \hline
 Parcela de test   & `Mínima' & `Puntal' & `Mínima'     \\
 Número de árboles & 42       & 77       & 54          
 \end{tabular}
@@ -31,46 +31,73 @@ Número de árboles & 42       & 77       & 54
 \end{table}
 
 \par Como se puede observar, los 3 casos de este método constan de un número óptimo de árboles de, al menos, el mismo orden. Cabe destacar que el aumento de complejidad en el modelo, sobre todo en el caso de la altura como salida del sistema.  
-\subsection{Salidas del modelo y evaluación}
-Como ya se ha comentado, las salidas del modelo son por defecto predicciones únicas, pero el marco de trabajo anterior demanda salidas en formato \gls{pdf} para ser integradas con el resto del modelo. En las figuras \ref{fig:pdf_b}, \ref{fig:pdf_h} y \ref{fig:pdf_bh} se puede apreciar cómo son algunas de estas salidas, siendo ejemplos para los 3 casos estudiados. 
+\subsection{Salidas del modelo}
+\subsubsection{Salidas de función de densidad de probabilidad}
+Como ya se ha comentado, las salidas del modelo son por defecto predicciones únicas, pero el marco de trabajo anterior demanda salidas en formato \gls{pdf} para ser integradas con el resto del modelo. En las figuras \ref{fig:pdf_b} (modelo de salida \gls{bbch}), \ref{fig:pdf_h} (modelo de salida altura) y \ref{fig:pdf_bh} (modelo de ambas salidas) se puede apreciar cómo son algunas de estas salidas, siendo ejemplos extraídos a partir de los mismos datos para los 3 casos estudiados. 
 \\
-% Dos figuras sueltas una al lado de otra
+% Dos figuras sueltas debajo de otra
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.9\linewidth]{archivos/tfg/Mean/TEST_PARC_PDF}
+\includegraphics[width=0.85\linewidth]{archivos/tfg/Mean/TEST_PARC_PDF}
 \captionof{figure}{Ejemplo de salida \gls{pdf} normalizada del modelo para estimación de \gls{bbch}.\label{fig:pdf_b}}
-\end{figure}%
-\begin{figure}
+\end{figure}
+\begin{figure}[h]
 \centering
-\includegraphics[width=0.9\linewidth]{archivos/tfg/Mean/TEST_PARC_PDF_H}
+\includegraphics[width=0.85\linewidth]{archivos/tfg/Mean/TEST_PARC_PDF_H}
 \captionof{figure}{Ejemplo de salida \gls{pdf} normalizada del modelo para estimación de la altura. \label{fig:pdf_h}}
+\end{figure}
+
+\par Las \gls{pdf}s se presentan normalizadas con respecto a la salida con mayor probabilidad. En estos ejemplos se puede ver como, aunque hay una salida que predomina con respecto al resto, no se excluyen las demás soluciones posibles. Esto facilita la integración con el modelo de predicción temporal ya que se pueden combinar ambas salidas \gls{pdf} para ver dónde coinciden y con qué probabilidad. En general, los resultados de la predicción temporal son bastante certeros, con oportunidad de fallo para ajustes finos en cultivos que hayan podido sufrir retrasos o adelantos en su desarrollo típico. Es ahí donde la contribución de este modelo es importante, aportando información extra en tiempo real y creando una predicción de cuáles serían los posibles estados de desarrollo en los que se encuentra el cultivo según la información actual de satélite. 
+\\
+\par Las 3 figuras \ref{fig:pdf_b}, \ref{fig:pdf_h} y \ref{fig:pdf_bh} han sido generadas con los mismos datos de entrada, es decir, los mismos datos de satélite en la misma parcela y fecha, por lo que las salidas para los modelos generados de estimación de \gls{bbch} (Figura \ref{fig:pdf_b}) y altura (Figura \ref{fig:pdf_h}) como modelos independientes se pueden comparar con las salidas del modelo de estimación de ambas (Figura \ref{fig:pdf_bh}). La principal diferencia que encontramos entre los mismos tipos de datos de salida para cada modelo es que, en general, las salidas individuales presentan una estimación principal con una diferencia de probabilidad mucho mayor con respecto al resto que las estimaciones del modelo de doble salida. El rango para cada salida se mantiene bastante similar en ambos modelos, además del valor con la probabilidad más alta, aunque la disminución de diferencias con las demás estimaciones, sobre todo en el caso de la altura (\ref{fig:sub2}), indica que ese sistema es menos preciso y estable. El hecho de que sea la salida de la altura la que se vea más perjudicada en este modelo de dos salidas puede deberse a que la optimización de este, en cuanto a número de árboles del regresor, es más similar, y por lo tanto más beneficiosa, con respecto al caso individual de estimación de \gls{bbch}.
+
+% Una figura con dos imágenes
+\begin{figure}[H]
+\centering
+\begin{subfigure}{0.9\textwidth}
+  \centering
+  \includegraphics[width=0.95\linewidth]{archivos/tfg/Mean/TEST_PARC_PDF_BH_B}
+  \caption{Ejemplo del modelo de doble salida: \gls{pdf} estimación de \gls{bbch}\label{fig:sub1}}
+\end{subfigure}
+\begin{subfigure}{0.9\textwidth}
+  \centering
+  \includegraphics[width=0.95\linewidth]{archivos/tfg/Mean/TEST_PARC_PDF_BH_H}
+  \caption{Ejemplo del modelo de doble salida: \gls{pdf} estimación de altura\label{fig:sub2}}
+\end{subfigure}
+\caption{Ejemplo de salidas \gls{pdf} normalizadas del modelo para estimación de \gls{bbch} y la altura. \label{fig:pdf_bh}}
+\end{figure}
+
+\subsubsection{Salidas de valor único}
+\par Para continuar con la presentación de los resultados obtenidos, se ilustran en las figuras \ref{fig:comp_b}, \ref{fig:comp_h} y \ref{fig:comp_bh} las comparaciones de las soluciones únicas obtenidas (salida con máxima probabilidad) y los datos de tierra tomados correspondientes para la parcela de test en 2018: \gls{bbch} general, máxima y mínima en la parcela, casos individual (\ref{fig:comp_b}) y de doble salida (\ref{fig:sub_c1}), o la altura general del cultivo, también para ambos casos (figuras \ref{fig:comp_h} y \ref{fig:sub_c2}, respectivamente). Estas salidas, aunque carecen de la información completa, son las más sencillas de comparar y evaluar con los resultados reales, ya que estos también son un único valor.  
+
+% Dos figuras sueltas debajo de otra
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\linewidth]{archivos/tfg/Mean/TEST_PARC_FINAL}
+\captionof{figure}{Ejemplo de salida \gls{pdf} normalizada del modelo para estimación de \gls{bbch}.\label{fig:comp_b}}
+\end{figure}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\linewidth]{archivos/tfg/Mean/TEST_PARC_FINAL_H}
+\captionof{figure}{Ejemplo de salida \gls{pdf} normalizada del modelo para estimación de la altura. \label{fig:comp_h}}
 \end{figure}
 
 % Una figura con dos imágenes
 \begin{figure}[h]
 \centering
-\begin{subfigure}{0.8\textwidth}
+\begin{subfigure}{0.9\textwidth}
   \centering
-  \includegraphics[width=0.9\linewidth]{archivos/tfg/Mean/TEST_PARC_PDF_BH_B}
-  \caption{A subfigure}
-  \label{fig:sub1}
+  \includegraphics[width=0.95\linewidth]{archivos/tfg/Mean/TEST_PARC_FINAL_BH}
+  \caption{Ejemplo del modelo de doble salida: \gls{pdf} estimación de \gls{bbch}\label{fig:sub_c1}}
 \end{subfigure}
-\begin{subfigure}{0.8\textwidth}
+\begin{subfigure}{0.9\textwidth}
   \centering
-  \includegraphics[width=0.9\linewidth]{archivos/tfg/Mean/TEST_PARC_PDF_BH_H}
-  \caption{A subfigure}
-  \label{fig:sub2}
+  \includegraphics[width=0.95\linewidth]{archivos/tfg/Mean/TEST_PARC_FINAL_BH_H}
+  \caption{Ejemplo del modelo de doble salida: \gls{pdf} estimación de altura\label{fig:sub_c2}}
 \end{subfigure}
-\caption{Ejemplo de salidas \gls{pdf} normalizadas del modelo para estimación de \gls{bbch} y la altura. \label{fig:pdf_bh}}
+\caption{Ejemplo de salidas \gls{pdf} normalizadas del modelo para estimación de \gls{bbch} y la altura. \label{fig:comp_bh}}
 \end{figure}
-
-\par Las \gls{pdf}s se presentan normalizadas con respecto a la salida con mayor probabilidad. En estos ejemplos se puede ver como, aunque hay una salida que predomina con respecto al resto, no se excluyen las demás soluciones posibles. Esto facilita la integración con el modelo de predicción temporal ya que se pueden combinar ambas salidas \gls{pdf} para ver dónde coinciden y con qué probabilidad. En general, los resultados de la predicción temporal son bastante certeros, con oportunidad de fallo para ajustes finos en cultivos que hayan podido sufrir retrasos o adelantos en su desarrollo típico. Es ahí donde la contribución de este modelo es importante, aportando información extra en tiempo real y creando una predicción de cuáles serían los posibles estados de desarrollo en los que se encuentra el cultivo según la información actual de satélite. 
-\\
-\par Las 3 figuras \ref{fig:pdf_b}, \ref{fig:pdf_h} y \ref{fig:pdf_bh} han sido generadas con los mismos datos de entrada, es decir, misma parcela, fecha y datos de satélite, por lo que las salidas para los modelos generados de estimación de \gls{bbch} (Figura \ref{fig:pdf_b}) y altura (Figura \ref{fig:pdf_h}) como modelos independientes se pueden comparar con las salidas del modelo de estimación de ambas (Figura \ref{fig:pdf_bh}). 
-
-
-
-
+\subsection{Evaluación de resultados}
 
 %%%%%%%%%%%%%%%%%%%
 \section{Método por píxeles} 
@@ -88,7 +115,7 @@ Como ya se ha comentado, las salidas del modelo son por defecto predicciones ún
 \begin{table}[h]
 \centering
 \begin{tabular}{l|ccc}
-                  & BBCH     & Altura   & BBCH\&Altura \\ \hline
+                  & gls{bbch}     & Altura   & gls{bbch}\&Altura \\ \hline
 Parcela de test   & `Mínima' & `Mínima' & `Mínima'     \\
 Número de árboles & 46       & 48       & 47          
 \end{tabular}
@@ -98,7 +125,10 @@ Número de árboles & 46       & 48       & 47
 \par Como se puede observar, los 3 casos coinciden en el set de parcelas de entrenamiento y test con el que se obtienen mejores resultados. Probablemente esto se debe a anomalías en el desarrollo de algunas parcelas, las cuales, si se toman como set de test, el modelo no las habría podido tener en cuenta en el aprendizaje y el error en la predicción sería mayor. Los 3 casos de este método constan de un número óptimo de árboles muy similares, con una diferencia de 1 y 2 con respecto al caso menor. Cabe destacar que el aumento de complejidad, aunque escaso, en el modelo de salida de la altura, como ocurre para el método anterior. Además, tanto para la metodología por píxeles como por parcelas, se obtiene un número óptimo de árboles para el caso de 2 salidas intermedio a los óptimos para las mismas salidas en modelos independientes. Esto se debe a una compensación en la estimación de ambas variables, para que una variable sea óptima sin que su mejora sea a costa de la otra se llega a un valor intermedio en el que ninguna de las salidas está totalmente optimizada pero tienen el mejor resultado del sistema compartido completo. 
 
 
-\subsection{Salidas del modelo y evaluación}
+\subsection{Salidas del modelo}
+\subsubsection{Salidas de función de densidad de probabilidad}
+\subsubsection{Salidas de valor único}
+\subsection{Evaluación de resultados}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Comparativa de métodos}
