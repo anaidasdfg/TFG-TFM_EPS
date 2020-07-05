@@ -69,28 +69,33 @@ Como ya se ha comentado, las salidas del modelo son por defecto predicciones ún
 
 \subsubsection{Salidas de valor único}
 \par Para continuar con la presentación de los resultados obtenidos, se ilustran en las figuras \ref{fig:comp_b}, \ref{fig:comp_h} y \ref{fig:comp_bh} las comparaciones de las soluciones únicas obtenidas (salida con máxima probabilidad) y los datos de tierra tomados correspondientes para la parcela de test en 2018: \gls{bbch} general, máxima y mínima en la parcela, casos individual (\ref{fig:comp_b}) y de doble salida (\ref{fig:sub_c1}), o la altura general del cultivo, también para ambos casos (figuras \ref{fig:comp_h} y \ref{fig:sub_c2}, respectivamente). Estas salidas, aunque carecen de la información completa, son las más sencillas de comparar y evaluar con los resultados reales, ya que estos también son un único valor.  
+\\
 
 % Dos figuras sueltas debajo de otra
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.8\linewidth]{archivos/tfg/Mean/TEST_PARC_FINAL}
+\includegraphics[width=\linewidth]{archivos/tfg/Mean/TEST_PARC_FINAL}
 \captionof{figure}{Ejemplo de salida \gls{pdf} normalizada del modelo para estimación de \gls{bbch}.\label{fig:comp_b}}
 \end{figure}
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.8\linewidth]{archivos/tfg/Mean/TEST_PARC_FINAL_H}
+\includegraphics[width=\linewidth]{archivos/tfg/Mean/TEST_PARC_FINAL_H}
 \captionof{figure}{Ejemplo de salida \gls{pdf} normalizada del modelo para estimación de la altura. \label{fig:comp_h}}
 \end{figure}
 
+\par Comenzando por los modelos de predicción de \gls{bbch} representados en las figuras \ref{fig:comp_b} y \ref{fig:sub_c1}, se pueden observar estimaciones y errores muy parecidos en ambos modelos. Estos son fácilmente comparables ya que la parcela de test coincide para los dos casos. Ambos modelos, presentan estimaciones que, en su mayoría, están fuera de los límites marcados por las líneas de \gls{bbch} máximas y mínimas medidas en campo. En general, se ve una tendencia creciente a lo largo de la variable estimada entorno a los valores reales, aunque con 2 o 3 zonas con picos de error mayor en las que el sistema predice un estado fenológico mayor al real. De hecho, el primer pico en torno a los días 30-40 después de la siembra está presente tanto en la estimación de \gls{bbch} como de la altura en las figuras \ref{fig:comp_h} y \ref{fig:sub_c2}. Teniendo en cuenta que los valores de entrada son iguales para todos los casos, se puede atribuir este fenómeno a anomalías presentes en los datos de satélite, los cuales, en  una etapa concreta del desarrollo del cultivo, pueden presentar valores muy similares a los obtenidos para etapas finales, y por ello cometer un error de predicción bastante grande. Este error sería corregible bien detectando la anomalía y eliminando o modificando esta parte de los datos de entrada, tanto en entrenamiento como en test o futuros usos, o bien comprobando que el modelo está generando predicciones correctas con menor densidad de probabilidad, estando representadas en las salidas de \gls{pdf}, y pudiendo ser consideradas sin un procesamiento extra de los datos, simplemente al contrastarlos con los resultados del modelo temporal, ya que es una diferencia de etapas muy grande y en este modelo no se daría un error de etapa de tal dimensión. 
+\\
+\par Visualizando las salidas para la altura, se puede también comparar, aunque no directamente, el funcionamiento de ambos modelos. En este caso las parcelas de test no son las mismas debido a la optimización para cada modelo, por lo que la comparación simplemente visual entre las dos representaciones es menos intuitiva. Aún así, se aprecian coincidencias como el error en la etapa cercana a 40 días, como se ha mencionado antes, o la estimación de mayor altura para los días de 0 a 10 después de la siembra. En general, ambas representaciones tienen también una tendencia creciente bastante similar a la real, con aparentemente mejor estimación para las etapas finales en el modelo de salida única de altura, ya que en la figura \ref{fig:comp_h} se observa una estimación menor constante para todas las etapas desde el día 80 tras la siembra hasta la cosecha (día 120 aproximadamente).
+
 % Una figura con dos imágenes
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
-\begin{subfigure}{0.9\textwidth}
+\begin{subfigure}{\textwidth}
   \centering
   \includegraphics[width=0.95\linewidth]{archivos/tfg/Mean/TEST_PARC_FINAL_BH}
   \caption{Ejemplo del modelo de doble salida: \gls{pdf} estimación de \gls{bbch}\label{fig:sub_c1}}
 \end{subfigure}
-\begin{subfigure}{0.9\textwidth}
+\begin{subfigure}{\textwidth}
   \centering
   \includegraphics[width=0.95\linewidth]{archivos/tfg/Mean/TEST_PARC_FINAL_BH_H}
   \caption{Ejemplo del modelo de doble salida: \gls{pdf} estimación de altura\label{fig:sub_c2}}
