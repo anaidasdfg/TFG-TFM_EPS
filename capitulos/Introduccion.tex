@@ -34,16 +34,29 @@ El objetivo general de este \gls{tfg} es estimar el estado de cultivos de arroz 
 \end{itemize}
 
 \section{Estructura de la memoria}
-\par La estructura de la memoria se va a dividir en 3 capítulos principales las cuales son: marco teórico, metodología y resultados. Además de unas conclusiones finales valorando los resultados obtenidos.
+\par La estructura de la memoria se divide en 4 capítulos principales, omitiendo este de introducción, los cuales son: marco teórico, metodología, resultados y conclusiones. 
 \\
-\par En el marco teórico se expondrá toda la teoría necesaria para la compresión de este proyecto en términos técnicos y dentro de un contexto y una investigación previa que este continúa. Veremos en él 3 secciones:
+\par En el marco teórico se expone toda la teoría necesaria para la compresión de este proyecto en términos técnicos y dentro de un contexto y una investigación previa que este continúa. Se ven en él 3 secciones:
 \begin{itemize}
-	\item Teledetección, incluyendo cómo funcionan los sistemas radar, en concreto los \gls{sar}, qué información obtenemos de ellos en ciertos programas de satélites y las técnicas de detección que determinan cómo interpretar esta información.
-	\item Técnicas de regresión y Machine Learning, donde se encuentra la clasificación de las distintas técnicas de \gls{ml}, algunos modelos y sus aplicaciones existentes, y, por último, el análisis mediante regresión. 
+	\item Teledetección, incluyendo cómo funcionan los sistemas radar, en concreto los \gls{sar}, qué información obtenemos de ellos y qué papel desempeñan los satélites y las técnicas de detección en el proceso de obtener e interpretar esta información.
+	\item Técnicas de regresión y Machine Learning, donde se encuentra la clasificación de las distintas técnicas de \gls{ml} y algunos modelos, más concretamente extendido el análisis mediante regresión. 
 	\item Estimación de parámetros físicos de cultivos mediante
-teledetección, donde se presentan la metodología general basada en el espacio de estados, los parámetros físicos de los cultivos con los que se puede trabajar y la estimación de estos mediante regresión. 
+teledetección, donde se presentan la metodología general basada en el espacio de estados presentada en el marco de trabajo previo y la estimación de los parámetros físicos de los cultivos mediante regresión. 
 \end{itemize}
 
-\par En cuanto a la metodología, se incluirán tanto las técnicas y métodos concretos que se van a utilizar, por qué motivos y qué esperamos obtener de ellos, como el software, el lenguaje de programación que vamos a emplear, las herramientas utilizadas y las bases de datos con las que vamos a trabajar, incluyendo su procedencia y procesamiento previo. 
-\\
-\par Por último, el apartado de resultados expondrá los resultados obtenidos con las diferentes técnicas de regresión y aprendizaje automático para los mismos datos. Estos resultados podrán ser fácilmente evaluados ya que se contrastarán, además, con los datos reales tomados en tierra de los mismos cultivos que se presentan en el dataset. 
+\par El siguiente capítulo, metodología, expone cómo se ha realizado este trabajo y está divido en 3 secciones principales:
+\begin{itemize}
+	\item Datos para análisis y modelado, que incluye la obtención de datos que se disponen para este estudio y la descripción detallada de todos ellos y su utilidad.
+	\item Procesamiento y división de datos, donde se explica el procesamiento de datos realizado para su preparación para la creación del modelo e incluyendo la división de datos según su funcionalidad dentro del modelo. 
+	\item Modelo de regresión y optimización, aquí se comparte qué modelo se va a utilizar, cómo funciona, las necesidades que tiene y la manera de optimizarlo para solucionar un problema concreto. 
+	\item Evaluación de resultados, expone cómo se van a presentar los resultados y qué métodos se van a utilizar para contrastar su eficiencia y fiabilidad. 
+\end{itemize}
+
+\par Seguidamente, el apartado de resultados tiene como objetivo exponer los resultados obtenidos con los distintos métodos y casos estudiados. Este apartado consta de las siguientes secciones: 
+\begin{itemize}
+	\item Método por parcelas, donde se muestra la optimización realizada para este método, las salidas del modelo implementado y su evaluación. 
+	\item Método por píxeles, donde se muestra, al igual que en el apartado anterior, la optimización realizada para este método, las salidas del modelo implementado y su evaluación. 
+	\item Comparativa de métodos, se evalúan los métodos utilizados para todos los casos y se justifican los resultados obtenidos. 
+\end{itemize}
+
+\par Por último, el capítulo de conclusiones expone la evaluación general sobre el trabajo realizado y los resultados obtenidos, las posibles mejoras que se podrían implementar y las líneas futuras del proyecto.
