@@ -128,19 +128,19 @@ Como ya se ha comentado, las salidas del modelo son por defecto predicciones ún
 \centering
 \begin{subfigure}{\textwidth}
   \centering
-  \includegraphics[width=0.95\linewidth]{archivos/tfg/Mean/TEST_PARC_RECTA_bh}
+  \includegraphics[width=0.9\linewidth]{archivos/tfg/Mean/TEST_PARC_RECTA_bh}
   \caption{Relación de la salida predicha y la verdad de tierra del modelo de doble salida para la estimación de \gls{bbch}. \label{fig:rel_bh_b}}
 \end{subfigure}
 \begin{subfigure}{\textwidth}
   \centering
-  \includegraphics[width=0.95\linewidth]{archivos/tfg/Mean/TEST_PARC_RECTA_bh_H}
+  \includegraphics[width=0.9\linewidth]{archivos/tfg/Mean/TEST_PARC_RECTA_bh_H}
   \caption{Relación de la salida predicha y la verdad de tierra del modelo de doble salida para la estimación de la altura\label{fig:rel_bh_h}}
 \end{subfigure}
 \caption{Relación de la salida predicha y la verdad de tierra del modelo de doble salida para la estimación de \gls{bbch} y la altura. \label{fig:rel_bh}}
 \end{figure}
 
 \par A parte de la evaluación con descriptores estadísticos que se realizan a la hora de comparar los dos métodos, se realiza también una evaluación de los datos de entrada utilizados. La tabla \ref{tab:imp_f} representa el peso que tiene cada una de las variables de entrada en el modelo generado para cada uno de los 3 casos tratados. 
-
+\\
 \begin{table}[h] 
 \centering
 \begin{tabular}{l|ccc}
@@ -157,8 +157,11 @@ Dev est. ratio & 0.07 & 0.07   & 0.06
 
 \par En la tabla \ref{tab:imp_f} se presentan proporciones altamente similares para los 3 casos contemplados, siendo incluso idénticos para los modelos de salidas independientes. El parámetro de entrada que destaca principalmente sobre el resto es el coeficiente de backscattering para la polarización VH, con más del 50\% de la predicción elaborada en base a él. Los siguientes parámetros más influyentes son el coeficiente de backscattering para la polarización VV y el ratio de ambos, y, por último, las desviaciones estándar, que suponen menos del 10\% de la predicción final. Para comprender mejor porqué existen estas diferencias, se representan en la figura \ref{fig:rel_param} la relación entre cada una de las variables con \gls{bbch}.
 \\
+\par Lo primero que se observa en la figura \ref{fig:rel_param} es que todas las subfiguras, en general, presentan una tendencia creciente conforme \gls{bbch} va creciendo, que a los primeros estados corresponden valores más bajos y que en todas aparece el pico de detección entorno a un valor de \gls{bbch} de 20-30, que se asemeja a los valores obtenidos por los mismos parámetros para \gls{bbch} cercanas a la cosecha. Esto confirma que las predicciones erróneas cercanas a estas etapas vienen dadas por esta anomalía a la que se le podría buscar corrección. 
+\\
+\par Comparando los valores que se obtienen para los distintos parámetros a partir de una \gls{bbch} de 40, se aprecia en la subfigura \ref{fig:VH} que su evolución es la más estable y además creciente. Esto quiere decir que, al contrario que en las subfiguras \ref{fig:VV} y \ref{fig:RATIO}, no hay oscilaciones en los valores de entrada y, por tanto, la predicción a partir de estos valores es más sencilla que si para un mismo valor de entrada pueden corresponder distintas \gls{bbch} o alturas. Además, estas etapas finales en la subfigura \ref{fig:VH} se presentan estables pero no constantes, que sería el peor caso que se puede hallar, ya que no aportaría ninguna distinción para intervalos de \gls{bbch} muy amplios. 
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \begin{subfigure}{.45\textwidth}
   \centering
@@ -177,8 +180,6 @@ Dev est. ratio & 0.07 & 0.07   & 0.06
 \end{subfigure}
 \caption{Relación de las variables de datos de entrada al modelo con respecto a la \gls{bbch} \label{fig:rel_param}}
 \end{figure}
-
-\par Lo primero que se observa en la figura \ref{rel_param} es que todas las subfiguras, en general, presentan una tendencia creciente conforme \gls{bbch} va creciendo, que a los primeros estados corresponden valores más bajos y que en todas aparece el pico de detección entorno a un valor de \gls{bbch} de 20-30, que se asemeja a los valores obtenidos por los mismos parámetros para \gls{bbch} cercanas a la cosecha. Esto confirma que las predicciones erróneas cercanas a estas etapas vienen dadas por esta anomalía a la que se le podría buscar corrección. Comparando los valores que se obtienen para los distintos parámetros a partir de una \gls{bbch} de 40, se aprecia en la subfigura \ref{fig:VH} que su evolución es la más estable y además creciente. Esto quiere decir que, al contrario que en las subfiguras \ref{fig:VV} y \ref{fig:RATIO}, no hay oscilaciones en los valores de entrada y, por tanto, la predicción a partir de estos valores es más sencilla que si para un mismo valor de entrada pueden corresponder distintas \gls{bbch} o alturas. Además, estas etapas finales en la subfigura \ref{fig:VH} se presentan estables pero no constantes, que sería el peor caso que se puede hallar, ya que no aportaría ninguna distinción para intervalos de \gls{bbch} muy amplios. 
 
 %%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%
@@ -209,33 +210,36 @@ Número de árboles & 46       & 48       & 47
 
 \subsection{Salidas del modelo}
 \subsubsection{Salidas de función de densidad de probabilidad}
-Como ya se ha comentado, las salidas del modelo son por defecto predicciones únicas, pero el marco de trabajo anterior demanda salidas en formato \gls{pdf} para ser integradas con el resto del modelo. En las figuras \ref{fig:p_pdf_b} (modelo de salida \gls{bbch}), \ref{fig:p_pdf_h} (modelo de salida altura) y \ref{fig:p_pdf_bh} (modelo de ambas salidas) se puede apreciar cómo son algunas de estas salidas, siendo ejemplos extraídos a partir de los mismos datos para los 3 casos estudiados. 
+Como se ha mencionado en la metodología anterior, las salidas útiles de este trabajo son las \gls{pdf}. En las figuras \ref{fig:p_pdf_b} (modelo de salida \gls{bbch}), \ref{fig:p_pdf_h} (modelo de salida altura) y \ref{fig:p_pdf_bh} (modelo de ambas salidas) se puede apreciar cómo son algunas de estas salidas en esta metodología, siendo ejemplos extraídos a partir de los mismos datos para los 3 casos estudiados. 
 \\
 % Dos figuras sueltas debajo de otra
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.85\linewidth]{archivos/tfg/Pixel/BBCH_PDF}
-\captionof{figure}{Ejemplo de salida \gls{pdf} normalizada del modelo para estimación de \gls{bbch}.\label{fig:p_pdf_b}}
-\end{figure}
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.85\linewidth]{archivos/tfg/Pixel/H_PDF}
-\captionof{figure}{Ejemplo de salida \gls{pdf} normalizada del modelo para estimación de la altura. \label{fig:p_pdf_h}}
+\begin{subfigure}{0.6\textwidth}
+	\includegraphics[width=\linewidth]{archivos/tfg/Pixel/BBCH_PDF}
+	\caption{Ejemplo de salida \gls{pdf} normalizada del 			modelo para estimación de \gls{bbch}.\label{fig:p_pdf_b}}
+\end{subfigure}
+\begin{subfigure}{0.6\textwidth}
+	\centering
+	\includegraphics[width=\linewidth]{archivos/tfg/Pixel/H_PDF}
+	\caption{Ejemplo de salida \gls{pdf} normalizada del 			modelo para estimación de la altura. \label{fig:p_pdf_h}}
+	\end{subfigure}
+	\caption{Ejemplo de salida \gls{pdf} normalizada los 			modelos para estimación de las variables independientes. \label{fig:p_pdf}}
 \end{figure}
 
-\par Las \gls{pdf}s se presentan normalizadas con respecto a la salida con mayor probabilidad. En estos ejemplos se puede ver como, aunque hay una salida que predomina con respecto al resto, no se excluyen las demás soluciones posibles. Esto facilita la integración con el modelo de predicción temporal ya que se pueden combinar ambas salidas \gls{pdf} para ver dónde coinciden y con qué probabilidad. En general, los resultados de la predicción temporal son bastante certeros, con oportunidad de fallo para ajustes finos en cultivos que hayan podido sufrir retrasos o adelantos en su desarrollo típico. Es ahí donde la contribución de este modelo es importante, aportando información extra en tiempo real y creando una predicción de cuáles serían los posibles estados de desarrollo en los que se encuentra el cultivo según la información actual de satélite. 
+\par Estas representaciones tienen las mismas características mencionadas anteriormente: están normalizadas con respecto a la salida con mayor probabilidad, destaca una salida predominante pero no se excluyen el resto a la hora de integrarse con el modelo de predicción temporal. 
 \\
-\par Las 3 figuras \ref{fig:p_pdf_b}, \ref{fig:p_pdf_h} y \ref{fig:p_pdf_bh} han sido generadas con los mismos datos de entrada, es decir, los mismos datos de satélite en la misma parcela y fecha, por lo que las salidas para los modelos generados de estimación de \gls{bbch} (Figura \ref{fig:p_pdf_b}) y altura (Figura \ref{fig:p_pdf_h}) como modelos independientes se pueden comparar con las salidas del modelo de estimación de ambas (Figura \ref{fig:p_pdf_bh}). La principal diferencia que encontramos entre los mismos tipos de datos de salida para cada modelo es que, en general, las salidas individuales presentan una estimación principal con una diferencia de probabilidad mucho mayor con respecto al resto que las estimaciones del modelo de doble salida. El rango para cada salida se mantiene bastante similar en ambos modelos, además del valor con la probabilidad más alta, aunque la disminución de diferencias con las demás estimaciones, sobre todo en el caso de la altura (\ref{fig:p_sub2}), indica que ese sistema es menos preciso y estable. El hecho de que sea la salida de la altura la que se vea más perjudicada en este modelo de dos salidas puede deberse a que la optimización de este, en cuanto a número de árboles del regresor, es más similar, y por lo tanto más beneficiosa, con respecto al caso individual de estimación de \gls{bbch}.
+\par Las figuras \ref{fig:p_pdf} y \ref{fig:p_pdf_bh} han sido generadas con los mismos datos de entrada, es decir, los mismos datos de satélite en la misma parcela y fecha, por lo que las salidas para los modelos generados de estimación de \gls{bbch} (Figura \ref{fig:p_pdf_b}) y altura (Figura \ref{fig:p_pdf_h}) como modelos independientes se pueden comparar con las salidas del modelo de estimación de ambas (Figura \ref{fig:p_pdf_bh}). La principal diferencia que se vuelve a encontrar entre los mismos tipos de datos de salida para cada modelo es que, las salidas individuales presentan una estimación principal con una diferencia de probabilidad mayor con respecto al resto que las estimaciones del modelo de doble salida. El rango para cada salida es bastante más amplio y disperso para el modelo de doble salida, esto junto a la disminución de diferencias con las demás estimaciones, indica que ese sistema es menos preciso y estable. En este modelo de dos salidas no se ve una clara optimización para una de ellas con respecto a la otra,  ya que además ambas tiene valores muy cercanos al sistema individual.
 
 % Una figura con dos imágenes
 \begin{figure}[H]
 \centering
-\begin{subfigure}{0.9\textwidth}
+\begin{subfigure}{0.6\textwidth}
   \centering
   \includegraphics[width=0.95\linewidth]{archivos/tfg/Pixel/BBCHH_PDF_BBCH}
   \caption{Ejemplo del modelo de doble salida: \gls{pdf} estimación de \gls{bbch}\label{fig:p_sub1}}
 \end{subfigure}
-\begin{subfigure}{0.9\textwidth}
+\begin{subfigure}{0.6\textwidth}
   \centering
   \includegraphics[width=0.95\linewidth]{archivos/tfg/Pixel/BBCHH_PDF_H}
   \caption{Ejemplo del modelo de doble salida: \gls{pdf} estimación de altura\label{fig:p_sub2}}
@@ -244,47 +248,51 @@ Como ya se ha comentado, las salidas del modelo son por defecto predicciones ún
 \end{figure}
 
 \subsubsection{Salidas de valor único}
-\par Para continuar con la presentación de los resultados obtenidos, se ilustran en las figuras \ref{fig:p_comp_b}, \ref{fig:p_comp_h} y \ref{fig:p_comp_bh} las comparaciones de las soluciones únicas obtenidas (salida con máxima probabilidad) y los datos de tierra tomados correspondientes para la parcela de test en 2018: \gls{bbch} general, máxima y mínima en la parcela, casos individual (\ref{fig:comp_b}) y de doble salida (\ref{fig:p_sub_c1}), o la altura general del cultivo, también para ambos casos (figuras \ref{fig:p_comp_h} y \ref{fig:p_sub_c2}, respectivamente). Estas salidas, aunque carecen de la información completa, son las más sencillas de comparar y evaluar con los resultados reales, ya que estos también son un único valor.  
+\par Para continuar con la presentación de los resultados obtenidos, se ilustran en las figuras \ref{fig:p_comp_b}, \ref{fig:p_comp_h} y \ref{fig:p_comp_bh} las comparaciones de las soluciones únicas obtenidas (salida con máxima probabilidad) y los datos de tierra tomados correspondientes para la parcela de test en 2018: \gls{bbch} general, máxima y mínima en la parcela, casos individual (\ref{fig:comp_b}) y de doble salida (\ref{fig:p_sub_c1}), o la altura general del cultivo, también para ambos casos (figuras \ref{fig:p_comp_h} y \ref{fig:p_sub_c2}, respectivamente). Se ha realizado una adaptación en los datos para poder representarlos de esta manera, ya que aquí la estimación de valor único se realiza a nivel de pixel y no de parcela, como los datos para contrastar. Es por ello que, para una representación y comprensión más sencillas, se representa la media y la desviación estándar para los píxeles a nivel de parcela y día. 
 \\
 
-% Dos figuras sueltas debajo de otra
+% Una figura con dos imágenes
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.95\linewidth]{archivos/tfg/Pixel/BBCH_COMPARACION_BIEN}
-\captionof{figure}{Comparación de la salida predicha y la verdad de tierra del modelo para estimación de \gls{bbch}.\label{fig:p_comp_b}}
-\end{figure}
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.95\linewidth]{archivos/tfg/Pixel/H_COMPARACION_BIEN}
-\captionof{figure}{Comparación de la salida predicha y la verdad de tierra del modelo para estimación de la altura. \label{fig:p_comp_h}}
+\begin{subfigure}{.6\textwidth}
+  \centering
+  \includegraphics[width=0.95\linewidth]{archivos/tfg/Pixel/BBCH_COMPARACION_BIEN}
+  \caption{Comparación de la salida predicha y la verdad de tierra del modelo para estimación de la altura. \label{fig:p_comp_h}}
+\end{subfigure}
+\begin{subfigure}{.6\textwidth}
+  \centering
+  \includegraphics[width=0.95\linewidth]{archivos/tfg/Pixel/H_COMPARACION_BIEN}
+  \caption{Comparación de la salida predicha y la verdad de tierra del modelo de doble salida para la estimación de la altura\label{fig:p_sub_c2}}
+\end{subfigure}
 \end{figure}
 
-\par Comenzando por los modelos de predicción de \gls{bbch} representados en las figuras \ref{fig:p_comp_b} y \ref{fig:p_sub_c1}, se pueden observar estimaciones y errores muy parecidos en ambos modelos. Estos son fácilmente comparables ya que la parcela de test coincide para los dos casos. Ambos modelos, presentan estimaciones que, en su mayoría, están fuera de los límites marcados por las líneas de \gls{bbch} máximas y mínimas medidas en campo. En general, se ve una tendencia creciente a lo largo de la variable estimada entorno a los valores reales, aunque con 2 o 3 zonas con picos de error mayor en las que el sistema predice un estado fenológico mayor al real. De hecho, el primer pico en torno a los días 30-40 después de la siembra está presente tanto en la estimación de \gls{bbch} como de la altura en las figuras \ref{fig:p_comp_h} y \ref{fig:p_sub_c2}. Teniendo en cuenta que los valores de entrada son iguales para todos los casos, se puede atribuir este fenómeno a anomalías presentes en los datos de satélite, los cuales, en  una etapa concreta del desarrollo del cultivo, pueden presentar valores muy similares a los obtenidos para etapas finales, y por ello cometer un error de predicción bastante grande. Este error sería corregible bien detectando la anomalía y eliminando o modificando esta parte de los datos de entrada, tanto en entrenamiento como en test o futuros usos, o bien comprobando que el modelo está generando predicciones correctas con menor densidad de probabilidad, estando representadas en las salidas de \gls{pdf}, y pudiendo ser consideradas sin un procesamiento extra de los datos, simplemente al contrastarlos con los resultados del modelo temporal, ya que es una diferencia de etapas muy grande y en este modelo no se daría un error de etapa de tal dimensión. 
-\\
-\par Visualizando las salidas para la altura, se puede también comparar, aunque no directamente, el funcionamiento de ambos modelos. En este caso las parcelas de test no son las mismas debido a la optimización para cada modelo, por lo que la comparación simplemente visual entre las dos representaciones es menos intuitiva. Aún así, se aprecian coincidencias como el error en la etapa cercana a 40 días, como se ha mencionado antes, o la estimación de mayor altura para los días de 0 a 10 después de la siembra. En general, ambas representaciones tienen también una tendencia creciente bastante similar a la real, con aparentemente mejor estimación para las etapas finales en el modelo de salida única de altura, ya que en la figura \ref{fig:p_comp_h} se observa una estimación menor constante para todas las etapas desde el día 80 tras la siembra hasta la cosecha (día 120 aproximadamente).
-
+\par En este método ambos modelos son comparables para las dos salidas posibles ya que todos ellos comparten la misma parcela de test, por lo que se compara la eficiencia para los mismos datos. Comenzando por los modelos de predicción de \gls{bbch} representados en las figuras \ref{fig:p_comp_b} y \ref{fig:p_sub_c1}, se pueden observar estimaciones y errores de nuevo muy parecidos. Ambos modelos presentan una tendencia creciente, que estima a la baja la fenología para las últimas etapas del desarrollo y los mismos picos de predicción errónea sobre los días desde la siembra de 30-40 ya comentados anteriormente. Exceptuando las últimas etapas, se aprecian medias bastante cercanas a los valores reales, aunque con unas desviaciones estándar muy grandes a partir de los 40 días desde la siembra. Estas desviaciones se deben tanto a diferencias reales en la parcela, áreas con diferente nivel de desarrollo, como a un mal ajuste del modelo ya que en el entrenamiento existían estas diferencias en la misma parcela y se ha considerado el mismo valor de \gls{bbch} por la disponibilidad de datos de verdad de tierra. En esta metodología no aparecen diferencias tan claras entre los dos modelos implementados, ya que eran bastante similares. 
 % Una figura con dos imágenes
 \begin{figure}[H]
 \centering
-\begin{subfigure}{\textwidth}
+\begin{subfigure}{.6\textwidth}
   \centering
   \includegraphics[width=0.95\linewidth]{archivos/tfg/Pixel/BBCHH_COMPARACION_BIEN_BBCH}
   \caption{Comparación de la salida predicha y la verdad de tierra del modelo de doble salida para la estimación de \gls{bbch}. \label{fig:p_sub_c1}}
 \end{subfigure}
 
-\begin{subfigure}{\textwidth}
+\begin{subfigure}{.6\textwidth}
   \centering
   \includegraphics[width=0.95\linewidth]{archivos/tfg/Pixel/BBCHH_COMPARACION_BIEN_H}
   \caption{Comparación de la salida predicha y la verdad de tierra del modelo de doble salida para la estimación de la altura\label{fig:p_sub_c2}}
 \end{subfigure}
-
 \caption{Comparación de la salida predicha y la verdad de tierra del modelo de doble salida para la estimación de \gls{bbch} y la altura. \label{fig:p_comp_bh}}
 \end{figure}
+
+\par Considerando las salidas para la altura, también se puede apreciar la gran similitud que presentan las representaciones comparadas: figuras \ref{fig:p_comp_h} y \ref{fig:p_sub_c2}, dificilmente diferenciables a simple vista. Las coincidencias más obvias son las mencionadas con la estimación de la \gls{bbch}: la tendencia creciente, los picos de predicciones erróneas para las mismas etapas y grandes desviaciones estándar, en este caso, durante todo el proceso. Hay que puntualizar, que las medias para cada parcela tienen valores muy próximos a los reales, sobretodo en las etapas intermedias y finales, cuando la mayoría de los modelos presentan mayor inexactitud. Aunque los resultados globales evaluados para la metodología a nivel de pixel puedan ser numéricamente peores debido a la evaluación independiente de cada pixel, este es el método que mejores resultados ha obtenido para la estimación de la altura.
+
+
 
 \subsection{Evaluación de resultados}
 \par Para la evaluación de los resultados obtenidos para el método por parcelas se van a utilizar, como se ha mencionado anteriormente, las salidas de valor único por su facilidad para ser representadas y comparadas con los valores únicos medidos. 
 \\
 \par La primera evaluación realizada se basa en la relación directa entre las salidas estimadas y las medidas reales, lo cuál muestra la fiabilidad del modelo de una forma más clara y así puede verse en las figuras \ref{fig:p_rel_b}, para el modelo de única salida de \gls{bbch}, \ref{fig:p_rel_h}, para el modelo de única salida de altura y la figura \ref{fig:p_rel_bh} para el modelo de doble salida. En estas representaciones se añade, además, una recta de pendiente ($m$) unidad, la cual sirve de referencia ya que esa relación representaría un modelo ideal. Se han utilizado para todas las representaciones los valores contrastados de la parcela de test correspondiente a cada caso, teniendo en cuenta ambos años de datos, 2017 y 2018.
+
 % Dos figuras sueltas debajo de otra
 \begin{figure}[h]
 \centering
@@ -293,7 +301,7 @@ Como ya se ha comentado, las salidas del modelo son por defecto predicciones ún
 \end{figure}
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.955\linewidth]{archivos/tfg/Pixel/H_RELACION_BIEN}
+\includegraphics[width=0.95\linewidth]{archivos/tfg/Pixel/H_RELACION_BIEN}
 \captionof{figure}{Relación de la salida predicha y la verdad de tierra del modelo para estimación de la altura. \label{fig:p_rel_h}}
 \end{figure}
 
