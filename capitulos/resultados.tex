@@ -100,7 +100,7 @@ Como ya se ha comentado, las salidas del modelo son por defecto predicciones ún
   \includegraphics[width=0.95\linewidth]{archivos/tfg/Mean/TEST_PARC_FINAL_BH_H}
   \caption{Comparación de la salida predicha y la verdad de tierra del modelo de doble salida para la estimación de la altura\label{fig:sub_c2}}
 \end{subfigure}
-\caption{Ejemplo de salidas \gls{pdf} normalizadas del modelo para estimación de \gls{bbch} y la altura. \label{fig:comp_bh}}
+\caption{Comparación de la salida predicha y la verdad de tierra del modelo de doble salida para la estimación de \gls{bbch} y la altura. \label{fig:comp_bh}}
 \end{figure}
 
 \subsection{Evaluación de resultados}
@@ -136,28 +136,55 @@ Como ya se ha comentado, las salidas del modelo son por defecto predicciones ún
   \includegraphics[width=0.95\linewidth]{archivos/tfg/Mean/TEST_PARC_RECTA_bh_H}
   \caption{Relación de la salida predicha y la verdad de tierra del modelo de doble salida para la estimación de la altura\label{fig:rel_bh_h}}
 \end{subfigure}
-\caption{Ejemplo de salidas \gls{pdf} normalizadas del modelo para estimación de \gls{bbch} y la altura. \label{fig:rel_bh}}
+\caption{Relación de la salida predicha y la verdad de tierra del modelo de doble salida para la estimación de \gls{bbch} y la altura. \label{fig:rel_bh}}
 \end{figure}
 
-\par A parte de la evaluación con descriptores estadísticos que se realizan a la hora de comparar los dos métodos, se realiza una evaluación de los datos de entrada utilizados. La tabla \ref{tab:imp_f} representa el peso que tiene cada una de las variables de entrada en el modelo generado para cada uno de los 3 casos tratados. 
+\par A parte de la evaluación con descriptores estadísticos que se realizan a la hora de comparar los dos métodos, se realiza también una evaluación de los datos de entrada utilizados. La tabla \ref{tab:imp_f} representa el peso que tiene cada una de las variables de entrada en el modelo generado para cada uno de los 3 casos tratados. 
 
-\begin{table}[h] \label{tab:imp_f}
+\begin{table}[h] 
+\centering
 \begin{tabular}{l|ccc}
-               & BBCH & Altura & BBCH\&Altura \\ \hline \hline
+               & \gls{bbch} & Altura & \gls{bbch}\&Altura \\ \hline \hline
 VV             & 0.12 & 0.12   & 0.12         \\
 VH             & 0.52 & 0.52   & 0.53         \\
 Ratio VH/VV    & 0.11 & 0.11   & 0.10         \\
-Est dev. VV    & 0.09 & 0.09   & 0.10         \\
-Est dev. VH    & 0.07 & 0.09   & 0.09         \\
-Est dev. ratio & 0.07 & 0.07   & 0.06        
+Dev est. VV    & 0.09 & 0.09   & 0.10         \\
+Dev est. VH    & 0.07 & 0.09   & 0.09         \\
+Dev est. ratio & 0.07 & 0.07   & 0.06        
 \end{tabular}
+\caption{Influencia de los parámetros de entrada en el modelo de estimación.\label{tab:imp_f}}
 \end{table}
+
+\par En la tabla \ref{tab:imp_f} se presentan proporciones altamente similares para los 3 casos contemplados, siendo incluso idénticos para los modelos de salidas independientes. El parámetro de entrada que destaca principalmente sobre el resto es el coeficiente de backscattering para la polarización VH, con más del 50\% de la predicción elaborada en base a él. Los siguientes parámetros más influyentes son el coeficiente de backscattering para la polarización VV y el ratio de ambos, y, por último, las desviaciones estándar, que suponen menos del 10\% de la predicción final. Para comprender mejor porqué existen estas diferencias, se representan en la figura \ref{fig:rel_param} la relación entre cada una de las variables con \gls{bbch}.
+\\
+
+\begin{figure}[h]
+\centering
+\begin{subfigure}{.45\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{archivos/VV}
+  \caption{Relación de la variable VV con respecto a la \gls{bbch}. \label{fig:VV}}
+\end{subfigure}%
+\begin{subfigure}{.45\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{archivos/VH}
+  \caption{Relación de la variable VH con respecto a la \gls{bbch}.\label{fig:VH}}
+\end{subfigure}
+\begin{subfigure}{.45\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{archivos/RATIO}
+  \caption{Relación de la variable ratio VH/VV con respecto a la \gls{bbch}.\label{fig:RATIO}}
+\end{subfigure}
+\caption{Relación de las variables de datos de entrada al modelo con respecto a la \gls{bbch} \label{fig:rel_param}}
+\end{figure}
+
+\par Lo primero que se observa en la figura \ref{rel_param} es que todas las subfiguras, en general, presentan una tendencia creciente conforme \gls{bbch} va creciendo, que a los primeros estados corresponden valores más bajos y que en todas aparece el pico de detección entorno a un valor de \gls{bbch} de 20-30, que se asemeja a los valores obtenidos por los mismos parámetros para \gls{bbch} cercanas a la cosecha. Esto confirma que las predicciones erróneas cercanas a estas etapas vienen dadas por esta anomalía a la que se le podría buscar corrección. Comparando los valores que se obtienen para los distintos parámetros a partir de una \gls{bbch} de 40, se aprecia en la subfigura \ref{fig:VH} que su evolución es la más estable y además creciente. Esto quiere decir que, al contrario que en las subfiguras \ref{fig:VV} y \ref{fig:RATIO}, no hay oscilaciones en los valores de entrada y, por tanto, la predicción a partir de estos valores es más sencilla que si para un mismo valor de entrada pueden corresponder distintas \gls{bbch} o alturas. Además, estas etapas finales en la subfigura \ref{fig:VH} se presentan estables pero no constantes, que sería el peor caso que se puede hallar, ya que no aportaría ninguna distinción para intervalos de \gls{bbch} muy amplios. 
 
 %%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%
 \section{Método por píxeles} 
 \subsection{Optimización}
-\par La optimización de los datos de entrada para este método se realiza de igual manera que el anterior, coincidiendo los mejores resultados para todos los casos en el uso de un conjunto de 6 parcelas para entrenamiento y 1 para la evaluación y de igual manera para los datos de entrada, aunque la desviación estándar no aporta una gran mejora para este método. En cuanto a la optimización del regresor, se utiliza también la relación entre el número de árboles para un modelo y el coeficiente de determinación, presentado en la imagen de ejemplo \ref{fig:opt_pixl} con el caso de salida \gls{bbch}. En ella, se puede ver que una vez alcanzado cierto nivel de coeficiente, la mejora de este en relación al aumento del número de árboles no es significativa con respecto al costo computacional y a la complejidad del sistema que se crea. 
+\par La optimización de los datos de entrada para este método se realiza de igual manera que el anterior, coincidiendo los mejores resultados para todos los casos en el uso de un conjunto de 6 parcelas para entrenamiento y 1 para la evaluación y los datos de entrada, se reducen a los tres principales (VV, VH y ratio), ya que la desviación estándar no aporta una gran mejora para este método. En cuanto a la optimización del regresor, se utiliza también la relación entre el número de árboles para un modelo y el coeficiente de determinación, presentado en la imagen de ejemplo \ref{fig:opt_pixl} con el caso de salida \gls{bbch}. En ella, se puede ver que una vez alcanzado cierto nivel de coeficiente, la mejora de este en relación al aumento del número de árboles no es significativa con respecto al costo computacional y a la complejidad del sistema que se crea. 
 \begin{figure}[h]
     \centering
     \includegraphics[height=9cm]{archivos/tfg/Pixel/opt_tree_bbch_pixel} 
@@ -244,12 +271,14 @@ Como ya se ha comentado, las salidas del modelo son por defecto predicciones ún
   \includegraphics[width=0.95\linewidth]{archivos/tfg/Pixel/BBCHH_COMPARACION_BIEN_BBCH}
   \caption{Comparación de la salida predicha y la verdad de tierra del modelo de doble salida para la estimación de \gls{bbch}. \label{fig:p_sub_c1}}
 \end{subfigure}
+
 \begin{subfigure}{\textwidth}
   \centering
   \includegraphics[width=0.95\linewidth]{archivos/tfg/Pixel/BBCHH_COMPARACION_BIEN_H}
   \caption{Comparación de la salida predicha y la verdad de tierra del modelo de doble salida para la estimación de la altura\label{fig:p_sub_c2}}
 \end{subfigure}
-\caption{Ejemplo de salidas \gls{pdf} normalizadas del modelo para estimación de \gls{bbch} y la altura. \label{fig:p_comp_bh}}
+
+\caption{Comparación de la salida predicha y la verdad de tierra del modelo de doble salida para la estimación de \gls{bbch} y la altura. \label{fig:p_comp_bh}}
 \end{figure}
 
 \subsection{Evaluación de resultados}
@@ -285,21 +314,21 @@ Como ya se ha comentado, las salidas del modelo son por defecto predicciones ún
   \includegraphics[width=0.95\linewidth]{archivos/tfg/Pixel/BBCHH_RELACION_BIEN_H}
   \caption{Relación de la salida predicha y la verdad de tierra del modelo de doble salida para la estimación de la altura\label{fig:p_rel_bh_h}}
 \end{subfigure}
-\caption{Ejemplo de salidas \gls{pdf} normalizadas del modelo para estimación de \gls{bbch} y la altura. \label{fig:p_rel_bh}}
+\caption{Relación de la salida predicha y la verdad de tierra del modelo de doble salida para la estimación de \gls{bbch} y la altura. \label{fig:p_rel_bh}}
 \end{figure}
 
 \par A parte de la evaluación con descriptores estadísticos que se realizan a la hora de comparar los dos métodos, se realiza una evaluación de los datos de entrada utilizados. La tabla \ref{tab:p_imp_f} representa el peso que tiene cada una de las variables de entrada en el modelo generado para cada uno de los 3 casos tratados. 
 
-\begin{table}[h] \label{tab:p_imp_f}
+\begin{table}[h]
+\centering
 \begin{tabular}{l|ccc}
-               & BBCH & Altura & BBCH\&Altura \\ \hline \hline
-VV             & 0.12 & 0.12   & 0.12         \\
-VH             & 0.52 & 0.52   & 0.53         \\
-Ratio VH/VV    & 0.11 & 0.11   & 0.10         \\
-Est dev. VV    & 0.09 & 0.09   & 0.10         \\
-Est dev. VH    & 0.07 & 0.09   & 0.09         \\
-Est dev. ratio & 0.07 & 0.07   & 0.06        
+               & \gls{bbch} & Altura & \gls{bbch}\&Altura \\ \hline \hline
+VV             & 0.19 & 0.16   & 0.19         \\
+VH             & 0.61 & 0.61   & 0.59         \\
+Ratio VH/VV    & 0.19 & 0.23   & 0.22         
+     
 \end{tabular}
+\caption{Influencia de los parámetros de entrada en el modelo de estimación. \label{tab:p_imp_f}}
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
