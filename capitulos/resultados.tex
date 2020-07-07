@@ -300,12 +300,6 @@ Como se ha mencionado en la metodología anterior, las salidas útiles de este t
 \subsection{Evaluación de resultados}
 \par Para la evaluación de los resultados obtenidos para el método por píxeles se van a utilizar, como se ha mencionado anteriormente, las salidas de valor único por su facilidad para ser representadas y comparadas con los valores únicos medidos. 
 \\
-\par La primera evaluación realizada se basa en la relación directa entre las salidas estimadas medias por día y las medidas reales, lo cuál muestra la fiabilidad del modelo de una forma más clara y así puede verse en las figuras \ref{fig:p_rel_b}, para el modelo de única salida de \gls{bbch}, \ref{fig:p_rel_h}, para el modelo de única salida de altura y la figura \ref{fig:p_rel_bh} para el modelo de doble salida. En estas representaciones se añade, además, una recta de pendiente ($m$) unidad, la cual sirve de referencia ya que esa relación representaría un modelo ideal. Se han utilizado para todas las representaciones los valores contrastados de la parcela de test correspondiente a cada caso, teniendo en cuenta ambos años de datos, 2017 y 2018.
-\\
-\par En la figura \ref{fig:p_rel_b} se aprecia una distribución uniforme, lo cuál indica que se disponen de datos suficientes para cubrir las distintas etapas del desarrollo del cultivo. Además, las nubes de puntos se mantienen, en general, cercanos a la recta de referencia, por lo que, excepto para puntos concretos como el pico de las etapas tempranas y las últimas etapas del cultivo, se obtienen resultados bastante buenos. Comparando esta información con la obtenida para el modelo de dos salidas, representado en la figura \ref{fig:p_rel_bh_b}, se puede asegurar a simple vista qué modelo da mejores resultados. En esta última figura las nubes de puntos se presentan más dispersas que en el anterior, aunque siguiendo la tendencia de la recta de referencia. Vemos, contrariamente, agrupaciones de puntos y huecos, por lo que algunas etapas no están siendo estimadas correctamente. Esto se puede deber al hecho de que el procesamiento de este modelo incluye una etapa de limpieza de datos corruptos que se encuentran en los datos de altura, por lo que en algunas etapas, tanto para la \gls{bbch} como  para la altura, faltan datos que aporten la información completa al sistema. 
-\\
-\par Comparando a continuación las figuras de los modelos con salida de altura del cultivo, \ref{fig:p_rel_bh} para salida única y \ref{fig:p_rel_bh_h} para salida doble, se observa en ambos una mayor inestabilidad en general debida a la concentración de puntos en algunas etapas. La altura de los cultivos no tiene un crecimiento tan lineal progresivo como la fenología de un cultivo, por lo que, a parte de por la corrección de datos, se encuentran concentraciones de datos debido a la estabilidad de la altura durante distintas etapas. Es por ello que, sobre todo en las etapas finales, hay una mayor concentración de puntos, cuando el arroz se mantiene en altura. Aún así, en la figura \ref{fig:p_rel_bh} se aprecia que todas las estimaciones de altura tienden a la baja para casi todos los datos de altura mayor a 80cm. Una posible explicación sería una tendencia generalizada más baja en las parcelas utilizadas para entrenar el modelo o la poca variación en los parámetros de entrada para alturas desde 50cm hasta 110cm, intervalo en el que la altura estimada se mantiene en torno a la misma franja de valores. 
-
 \begin{figure}[H]
 \centering
 \begin{subfigure}{.7\textwidth}
@@ -319,8 +313,8 @@ Como se ha mencionado en la metodología anterior, las salidas útiles de este t
 \end{subfigure}
 \captionof{figure}{Relación de la salida predicha y la verdad de tierra de los modelos de salidas independientes. \label{fig:p_rel_2}}
 \end{figure}
-
-% Una figura con dos imágenes
+\par Se realiza la primera evaluación, la relación directa entre las salidas estimadas medias por día y las medidas reales, en las figuras \ref{fig:p_rel_b}, para el modelo de única salida de \gls{bbch}, \ref{fig:p_rel_h}, para el modelo de única salida de altura y la figura \ref{fig:p_rel_bh} para el modelo de doble salida. Se incluye en ellas, igualmete, la recta de referencia de pendiente ($m$) unidad, como modelo ideal. Se han utilizado para todas las representaciones los valores contrastados de la parcela de test correspondiente a cada caso, teniendo en cuenta ambos años de datos, 2017 y 2018.
+\\
 \begin{figure}[H]
 \centering
 \begin{subfigure}{0.7\textwidth}
@@ -335,7 +329,10 @@ Como se ha mencionado en la metodología anterior, las salidas útiles de este t
 \end{subfigure}
 \caption{Relación de la salida predicha y la verdad de tierra del modelo de doble salida para la estimación de \gls{bbch} y la altura. \label{fig:p_rel_bh}}
 \end{figure}
-
+\par En todas las figuras se aprecia una distribución uniforme, lo cuál indica que se disponen de datos suficientes para cubrir las distintas etapas del desarrollo del cultivo. Solo se encuentran aglomeraciones de puntos en las figuras \ref{fig:p_rel_h} y \ref{fig:p_rel_bh_h}, las correspondientes a la variable altura, donde en las últimas etapas se mantiene una altura entorno a 70cm por más tiempo, por lo que se tienen más muestras. Además, las nubes de puntos se mantienen, en general, cercanos a la recta de referencia, exceptuando el pico de las etapas tempranas, presente en todos los casos, y las últimas etapas del cultivo, para las que la estimación es de nuevo inferior a la real, viéndose este error de predicción más severo para las figuras de \gls{bbch}, \ref{fig:p_rel_b} y \ref{fig:p_rel_bh_b}. Se sigue apreciando también en estas representaciones que la estimación de la altura para las etapas finales obtiene los mejores resultados. 
+\\
+\par Las diferencias entre los resultados expuestos en la figura \ref{fig:p_rel_2} y \ref{fig:p_rel_bh}, casos de salida individual y doble respectivamente, son difícilmente apreciables por la similitud de los modelos, y por tanto, de sus salidas. Se puede concluir entonces, que ambos modelos son eficientes y útiles en las estimaciones de \gls{bbch} y alturas, ya sea de manera individual o conjunta. 
+\\ 
 \par A parte de la evaluación con descriptores estadísticos que se realizan a la hora de comparar los dos métodos, se realiza una evaluación de los datos de entrada utilizados. La tabla \ref{tab:p_imp_f} representa el peso que tiene cada una de las variables de entrada en el modelo generado para cada uno de los 3 casos tratados. 
 
 \begin{table}[h]
@@ -349,6 +346,8 @@ Ratio VH/VV    & 0.19 & 0.23   & 0.22
 \end{tabular}
 \caption{Influencia de los parámetros de entrada en el modelo de estimación. \label{tab:p_imp_f}}
 \end{table}
+
+\par Aunque aquí se encuentran algunas diferencias, más que en la metodología anterior, todas son muy similares. El parámetro con más peso siempre es el coeficiente de backscattering VH, seguido por las otras dos variables aproximadamente igualadas. En esta metodología el parámetro principal tiene más peso, entorno a un 60\%, debido bien a la ausencia de las variables de entrada de desviación estándar, o bien al análisis a nivel de pixel, que obtenga mejores resultados gracias a esta variable. La razón por la que este parámetro funciona mejor como estimador se ha visto y comentado con las representaciones de la figura \ref{fig:rel_param}, totalmente válidas para este caso ya que las relaciones entre los datos de entrada y, por ejemplo, la \gls{bbch} son iguales.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
