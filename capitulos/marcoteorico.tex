@@ -22,8 +22,15 @@
 \\
 \par Al tratarse de un instrumento activo, este también ilumina con pulsos electromagnéticos el área a observar, emitidos por una antena propia, por lo que no depende de fuentes externas de radiación, esto es que, incluso objetos que no emitan radiación ni reflejen de otras fuentes, se podrán detectar gracias a la reflexión de esta incidencia. 
 \\ 
-\par La información que se obtiene en una antena receptora (o la misma emisora con doble función) de esta reflexión es otra onda electromagnética de la cual se puede medir su potencia, fase y polarización para obtener información útil del área observada. Para todas ellas deben tenerse en cuenta parámetros adicionales que influyen durante el trayecto del pulso, como es el retardo de fase o las pérdidas de potencia. El producto típico que esto genera se conoce como imagen \gls{sar}, es una representación gráfica cuyo eje horizontal corresponde al azimuth y el eje vertical al rango o distancia, y se presentan, normalmente en escala de grises, las contribuciones para cada ``pixel'', siendo el blanco la máxima y el negro la mínima. También se puede representar de igual manera la fase, en escala de grises o color, repartidos entre los 0-360º. *INTRODUCIR IMAGEN SAR*
+\par La información que se obtiene en una antena receptora (o la misma emisora con doble función) de esta reflexión es otra onda electromagnética de la cual se puede medir su potencia, fase y polarización para obtener información útil del área observada. Para todas ellas deben tenerse en cuenta parámetros adicionales que influyen durante el trayecto del pulso, como es el retardo de fase o las pérdidas de potencia. El producto típico que esto genera se conoce como imagen \gls{sar}, cuyo ejemplo se puede ver en la figura \ref{fig:sar}, que es una representación gráfica cuyo eje horizontal corresponde al azimuth y el eje vertical al rango o distancia, y se presentan, normalmente en escala de grises, las contribuciones para cada ``pixel'', siendo el blanco la máxima y el negro la mínima. También se puede representar de igual manera la fase, en escala de grises o color, repartidos entre los 0-360º. 
 \\
+\begin{figure}[h]
+\centering
+\captionsetup{width=.8\linewidth}
+    \includegraphics[width=.8\linewidth]{archivos/SAR_SN}
+    \caption{Imagen \gls{sar} de Sierra Nevada tomada por el satélite de Sentinel-1 con polarización VV (dB). \cite{sentinelhub}}
+    \label{fig:sar}
+\end{figure}
 \par La potencia recibida ($P_{R}$) se puede considerar como la contribución de los siguientes parámetros: potencia transmitida ($P_{T}$), longitud de onda ($\lambda$), ganancia de la antena ($G$), pérdidas en sistema ($L_{s}$) y en atmósfera ($L_{a}$), la longitud del trayecto ($R$), la superficie del área observada ($S$) y, por último, el coeficiente de backscattering ($\sigma_{0}$), teniendo en cuenta ambos trayectos de ida y vuelta y la propagación esférica de la onda, como se muestra en la fórmula \ref{Pr}. 
 \\
 \begin{equation} \label{Pr}
@@ -68,9 +75,14 @@ P_{R}=\frac{P_{T}\lambda ^{2}G^{2}\sigma_{0}S}{(4\pi ) ^{3}L_{s}L_{a}R^{4}}
 
 
 \section{Técnicas de regresión y Machine Learning}
-\par Las técnicas de regresión proporcionan una estimación de una variable dependiente de otras la cual es útil para realizar predicciones, por lo que están relacionados con el aprendizaje automático o \gls{ml}. El \gls{ml} es un tipo de inteligencia artificial, que se caracteriza por la generación de un modelo estimado de manera automática por un computador. Esta estimación se realiza con un entrenamiento previo aplicado a un algoritmo de aprendizaje específico a una serie de datos de entrenamiento. Con este aprendizaje se elabora un modelo que es capaz de devolver una salida o solución a partir de unos parámetros de entrada que deben ser del mismo tipo que los utilizados en la fase de aprendizaje. 
+\par Las técnicas de regresión proporcionan una estimación de una variable dependiente de otras la cual es útil para realizar predicciones, por lo que están relacionados con el aprendizaje automático o \gls{ml}. El \gls{ml} es un tipo de inteligencia artificial, que se caracteriza por la generación de un modelo estimado de manera automática por un computador. Esta estimación se realiza con un entrenamiento previo aplicado a un algoritmo de aprendizaje específico a una serie de datos de entrenamiento. Con este aprendizaje se elabora un modelo que es capaz de devolver una salida o solución a partir de unos parámetros de entrada que deben ser del mismo tipo que los utilizados en la fase de aprendizaje, el esquema general se puede ver en la imagen \ref{fig:ml}. 
 \\
-\par * Introducir aquí esquema de ML *
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=.8\linewidth]{archivos/ESQUEMA_ML}
+    \caption{Esquema general del funcionamiento de las técnicas de \gls{ml}.}
+    \label{fig:ml}
+\end{figure}
 \\
 \par Finalmente, el objetivo de las técnicas de \gls{ml} puede ser clasificar una información o realizar una previsión acorde con un modelo estimado. Como se puede ver, el objetivo de este y las técnicas de regresión pueden coincidir para el segundo caso, y esto lleva aun desarrollo conjunto de ambas técnicas. 
 
