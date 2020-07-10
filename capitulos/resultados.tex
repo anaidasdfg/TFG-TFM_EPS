@@ -52,7 +52,7 @@ Como ya se ha comentado, las salidas del modelo son por defecto predicciones ún
 \end{subfigure}
 \caption{Ejemplo de salidas \gls{pdf} normalizadas del modelo para estimación de \gls{bbch} y la altura. \label{fig:pdf_bh}}
 \end{figure}
-\par Las 3 figuras \ref{fig:pdf_b}, \ref{fig:pdf_h} y \ref{fig:pdf_bh} han sido generadas con los mismos datos de entrada, es decir, los mismos datos de satélite en la misma parcela y fecha, por lo que las salidas para los modelos generados de estimación de \gls{bbch} (Figura \ref{fig:pdf_b}) y altura (Figura \ref{fig:pdf_h}) como modelos independientes se pueden comparar con las salidas del modelo de estimación de ambas (Figura \ref{fig:pdf_bh}). La principal diferencia que encontramos entre los mismos tipos de datos de salida para cada modelo es que, en general, las salidas individuales presentan una estimación principal con una diferencia de probabilidad mucho mayor con respecto al resto que las estimaciones del modelo de doble salida. El rango para cada salida se mantiene bastante similar en ambos modelos, además del valor con la probabilidad más alta, aunque la disminución de diferencias con las demás estimaciones, sobre todo en el caso de la altura (\ref{fig:sub2}), indica que ese sistema es menos preciso y estable. El hecho de que sea la salida de la altura la que se vea más perjudicada en este modelo de dos salidas puede deberse a que la optimización de este, en cuanto a número de árboles del regresor, es más similar, y por lo tanto más beneficiosa, con respecto al caso individual de estimación de \gls{bbch}.
+\par Las 3 figuras \ref{fig:pdf_b}, \ref{fig:pdf_h} y \ref{fig:pdf_bh} han sido generadas con los mismos datos de entrada, es decir, los mismos datos de satélite en la misma parcela y fecha, por lo que las salidas para los modelos generados de estimación de \gls{bbch} (Figura \ref{fig:pdf_b}) y altura (Figura \ref{fig:pdf_h}) como modelos independientes se pueden comparar con las salidas del modelo de estimación de ambas (Figura \ref{fig:pdf_bh2}). La principal diferencia que encontramos entre los mismos tipos de datos de salida para cada modelo es que, en general, las salidas individuales presentan una estimación principal con una diferencia de probabilidad mucho mayor con respecto al resto que las estimaciones del modelo de doble salida. El rango para cada salida se mantiene bastante similar en ambos modelos, además del valor con la probabilidad más alta, aunque la disminución de diferencias con las demás estimaciones, sobre todo en el caso de la altura (\ref{fig:sub2}), indica que ese sistema es menos preciso y estable. El hecho de que sea la salida de la altura la que se vea más perjudicada en este modelo de dos salidas puede deberse a que la optimización de este, en cuanto a número de árboles del regresor, es más similar, y por lo tanto más beneficiosa, con respecto al caso individual de estimación de \gls{bbch}.
 
 % Una figura con dos imágenes
 \begin{figure}[H]
@@ -67,7 +67,7 @@ Como ya se ha comentado, las salidas del modelo son por defecto predicciones ún
   \includegraphics[width=0.95\linewidth]{archivos/tfg/Mean/TEST_PARC_PDF_BH_H}
   \caption{Ejemplo del modelo de doble salida: \gls{pdf} estimación de altura\label{fig:sub2}}
 \end{subfigure}
-\caption{Ejemplo de salidas \gls{pdf} normalizadas del modelo para estimación de \gls{bbch} y la altura. \label{fig:pdf_bh}}
+\caption{Ejemplo de salidas \gls{pdf} normalizadas del modelo para estimación de \gls{bbch} y la altura. \label{fig:pdf_bh2}}
 \end{figure}
 
 \subsubsection{Salidas de valor único}
