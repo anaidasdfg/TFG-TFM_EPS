@@ -1,0 +1,166 @@
+% Encoding: UTF-8
+
+@Article{Juanma2016,
+  author       = {Caleb De Bernardis and Fernando Vicente-Guijalba and Tomas Martinez-Marin and Juan M. Lopez-Sanchez},
+  title        = {Contribution to Real-Time Estimation of Crop Phenological States in a Dynamical Framework Based on NDVI Time Series: Data Fusion With SAR and Temperature},
+  journaltitle = {IEEE JOURNAL OF SELECTED TOPICS IN APPLIED EARTH OBSERVATIONS AND REMOTE SENSING},
+  year         = {2016},
+  date         = {2016-04-05},
+}
+
+@Online{RAI,
+  author = {Real Academia de Ingeniería},
+  title  = {Diccionario Español de Ingeniería},
+  year   = {2014},
+  date   = {2014},
+  url    = {http://diccionario.raing.es/es},
+}
+
+@Article{Juanma2014,
+  author       = {Fernando Vicente-Guijalba and Tomas Martinez-Marin and Juan M. Lopez-Sanchez},
+  title        = {Dynamical Approach for Real-Time Monitoring of Agricultural Crops},
+  journaltitle = {IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING},
+  year         = {2014},
+  date         = {2014-12-18},
+}
+
+@Article{artRF,
+  author  = {Hongquan Wanga and Ramata Magagia and Kalifa Goïtaa and Melanie Trudela and Heather McNairnb and Jarrett Powers},
+  title   = {Crop phenology retrieval via polarimetric SAR decomposition and Random Forest algorithm},
+  journal = {Elsevier},
+  year    = {2019},
+  date    = {2019-05-31},
+}
+
+@Book{MLFlach,
+  author = {Peter Flach},
+  title  = {Machine Learning: The Art and Science of Algorithms that Make Sense of Data},
+  year   = {2012},
+  date   = {2012},
+}
+
+@Book{MLRussell,
+  author = {Stuart J. Russell and Peter Norvig},
+  title  = {Artificial Intelligence A Modern Approach},
+  year   = {2010},
+  date   = {2010},
+}
+
+@Book{MLPref,
+  author = {Johannes Fürnkranz and Eyke Hüllermeier},
+  title  = {Preference Learning: An Introduction},
+  year   = {2011},
+  date   = {2011},
+}
+
+@Article{MLhand,
+  author  = {Dennis Decoste and BEernhard Scholkopf},
+  title   = {Training Invariant Support Vector Machines},
+  journal = {Kluwer Academic Publishers},
+  year    = {2002},
+  date    = {2002},
+}
+
+@Article{MLText,
+  author  = {Thorsten Joachims},
+  title   = {Text categorization with Support Vector Machines: Learning with many relevant features},
+  journal = {Machine Learning: ECML-98. Lecture Notes in Computer Science},
+  year    = {1998},
+  date    = {1998},
+}
+
+@Article{MLimg,
+  author  = {Lauren Barghout},
+  title   = {Spatial-Taxon Information Granules as Used in Iterative Fuzzy-Decision-Making for Image Segmentation},
+  journal = {Granular Computing and Decision-Making},
+  year    = {2015},
+  date    = {2015},
+}
+
+@Article{MLSAR,
+  author  = {Abhishek Maity},
+  title   = {Supervised Classification of RADARSAT-2 Polarimetric Data for Different Land Features},
+  journal = {CoRR},
+  year    = {2016},
+  date    = {2016},
+  url     = {https://dblp.org/rec/journals/corr/Maity16.bib},
+}
+
+@Online{yts1,
+  author = {\gls{esa}},
+  title  = {Sentinel-1: Radar mission},
+  year   = {2014},
+  date   = {2014-04-01},
+  url    = {https://www.youtube.com/watch?v=FJWzLxdSMyA},
+}
+
+@Online{copernicusOV,
+  author = {\gls{esa}},
+  title  = {Copernicus Overview},
+  year   = {2016},
+  url    = {https://www.esa.int/Applications/Observing_the_Earth/Copernicus/Overview4},
+}
+
+@Online{ESAcons,
+  author = {\gls{esa}},
+  title  = {Sentinel-1 constellation},
+  year   = {2014},
+  date   = {2014},
+  url    = {https://www.esa.int/Applications/Observing_the_Earth/Copernicus/Sentinel-1/Satellite_constellation},
+}
+
+@Online{EOSs1,
+  author = {\gls{eos}},
+  title  = {SENTINEL 1:},
+  year   = {2014},
+  date   = {2014},
+  url    = {https://eos.com/sentinel-1/},
+}
+
+@Book{feno,
+  author = {Francisco Elías Castillo and Francesc Castellví Sentís},
+  title  = {Agrometeorología},
+  year   = {2001},
+  date   = {2001},
+}
+
+@Article{bbch,
+  author  = {Uwe Meier},
+  title   = {Growth stages of mono-and dicotyledonous plants},
+  journal = {Federal Biological Research Centre for Agriculture and Forestry},
+  year    = {2001},
+  date    = {2001},
+  url     = {https://web.archive.org/web/20180427154542/https://ojs.openagrar.de/index.php/BBCH/article/download/515/464},
+}
+
+@Article{bbcht,
+  author  = {Peter D. Lancashire and Hermann Bleiholder and T. Van Den Boom and P. Langeluddeke and R. Stauss and Elfriede Weber and A. Witzenberger},
+  title   = {A uniform decimal code for growth stages of crops and weeds},
+  journal = {Annals of Applied Biology},
+  year    = {1991},
+  date    = {1991},
+}
+
+@Article{ndvi,
+  author  = {James Verdin and Diego Pedreros and Gary Eilerts},
+  title   = {Índice Diferencial de Vegetación Normalizado (NDVI)},
+  journal = {FEWS - Red de Alerta Temprana Contra la Inseguridad Alimentaria, Centroamérica, USGS/EROS Data Center},
+  year    = {2003},
+  date    = {2003},
+}
+
+@Online{copData,
+  author = {\gls{esa}},
+  title  = {Missions: Sentinel -1. Data Products},
+  year   = {2020},
+  url    = {https://sentinels.copernicus.eu/web/sentinel/missions/sentinel-1/data-products},
+}
+
+@Online{sentinelhub,
+  author = {Sinergise Laboratory for geographical information systems, Ltd.},
+  editor = {Sinergise Laboratory for geographical information systems, Ltd.},
+  title  = {Sentinel Hub Playground},
+  url    = {https://apps.sentinel-hub.com/sentinel-playground/?source=S2&lat=40.4&lng=-3.730000000000018&zoom=12&preset=1-NATURAL-COLOR&layers=B01,B02,B03&maxcc=20&gain=1.0&gamma=1.0&time=2019-12-01%7C2020-06-29&atmFilter=&showDates=false},
+}
+
+@Comment{jabref-meta: databaseType:biblatex;}
